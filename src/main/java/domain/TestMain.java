@@ -10,9 +10,9 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class testMain {
+public class TestMain {
     private String id;
-    private List<testQuestion> questions;
+    private List<TestQuestion> questions;
     private Date testStartTime;
     private Date testEndTime;
 }

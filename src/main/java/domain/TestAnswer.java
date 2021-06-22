@@ -9,7 +9,7 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class testAnswer {
+public class TestAnswer {
     private String id;
     private List<String> answers;
     private String correctAnswer;
