@@ -12,7 +12,7 @@ import java.util.List;
 @NoArgsConstructor
 public class TestMain {
     private String id;
-    private List<TestQuestion> questions;
+    private String questionIDs;
     private Date testStartTime;
     private Date testEndTime;
 }

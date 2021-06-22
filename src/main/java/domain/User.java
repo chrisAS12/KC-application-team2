@@ -1,6 +1,5 @@
 package domain;
 
-import com.sun.istack.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -26,4 +25,8 @@ public class User {
 
     @Column(name = "user_password")
     private String password;
+
+    @Column(name = "user_role")
+    private String role;
+
 }
