@@ -23,7 +23,7 @@ public class User {
     @Column(name = "user_email")
     private String email;
 
-    @Column(name = "user_password")
+    @Column(name = "user_password") // password should be encrypted in MD5
     private String password;
 
     @Column(name = "user_role")
