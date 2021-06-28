@@ -23,4 +23,9 @@ public class TestQuestion {
     private String questionAnswerVariants;
     @Column(name = "question_type")
     private String type;
+
+
+    public int getId() {
+        return id;
+    }
 }

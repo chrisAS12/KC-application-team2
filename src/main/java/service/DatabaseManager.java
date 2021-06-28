@@ -1,4 +1,7 @@
-package domain;
+package service;
+import domain.TestAnswer;
+import domain.TestQuestion;
+import domain.User;
 import org.hibernate.HibernateException;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
