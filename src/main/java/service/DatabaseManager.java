@@ -28,7 +28,6 @@ public class DatabaseManager {
 
     public User login(String email, String password) {
         var session = factory.openSession();
-
         try {
             String hql = "FROM User U WHERE U.email = :email and U.password = MD5(:pwd)";
             Query query1 = session.createQuery(hql);
@@ -47,6 +46,20 @@ public class DatabaseManager {
             session.close();
         }
         return null;
+    }
+
+    public boolean createUser(String email, String pw){   //NOT FINAL. just so I can test login
+        var session = factory.openSession();
+        try {
+            String a = "CREATE USER ? identified by ?";
+            Query q1 = session.createQuery(a);
+            q1.setParameter(1,email);
+            q1.setParameter(2,pw);
+            return true;
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return false;
     }
 
     public void save(Object item) {
