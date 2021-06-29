@@ -1,8 +1,8 @@
-package controller;
+package com.example.KCbootcampapplication.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import service.DatabaseManager;
+import com.example.KCbootcampapplication.service.DatabaseManager;
 
 @Controller
 @RequestMapping("/user-dashboard")

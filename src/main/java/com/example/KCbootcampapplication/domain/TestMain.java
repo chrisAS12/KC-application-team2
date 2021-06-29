@@ -1,4 +1,4 @@
-package domain;
+package com.example.KCbootcampapplication.domain;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

@@ -1,7 +1,7 @@
-package service;
-import domain.TestAnswer;
-import domain.TestQuestion;
-import domain.User;
+package com.example.KCbootcampapplication.service;
+import com.example.KCbootcampapplication.domain.TestAnswer;
+import com.example.KCbootcampapplication.domain.TestQuestion;
+import com.example.KCbootcampapplication.domain.User;
 import org.hibernate.HibernateException;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
