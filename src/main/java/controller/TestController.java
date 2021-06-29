@@ -22,12 +22,10 @@ public class TestController {
     @GetMapping("/{testId}")
     public String takeTestView(@PathVariable("testId") int testId, Model model) {
 
-        // TODO - implement dbmanager methods to get all questions with the specified testId
-        //List<TestQuestion> questions = dbManager.getQuestions(testId);
-        //model.addAttribute(questions);
-
-        // TODO
-        return null;
+        var questions = dbManager.getQuestionsFromTestId(testId);
+        model.addAttribute(questions);
+        // FIXME
+        return "";
     }
 
     @PostMapping("/takeTest")

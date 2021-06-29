@@ -144,6 +144,30 @@ public class DatabaseManager {
         }
     }
 
+    public TestQuestion getQuestionsFromTestId(int testId){
+        var session = factory.openSession();
+        try {
+            String hql = "FROM TestQuestion T WHERE T.test_question_id = :testId";
+            Query query1 = session.createQuery(hql);
+
+            query1.setParameter("testId", testId);
+            var results = query1.list();
+
+            if (results.size() > 0) {
+                return (TestQuestion) results;
+            }
+        } catch (HibernateException ex) {
+            System.err.println(ex);
+        } finally {
+            session.close();
+        }
+        return null;
+    }
+
+    public void createQuestion(){
+        TestQuestion question = new TestQuestion();
+    }
+
 // FROM Questions Q WHERE Q.id = :1
     // question_variants
 }
