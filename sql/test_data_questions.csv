@@ -1,0 +1,3 @@
+question_id,question_body,question_type,question_variants,test_question_id
+1," How could you declare character variable a with value Q?",RAD,"String s = "Q";[=]character c = 'Q';[=]char c = "Q";[=]char c = 'Q';",1
+2,"Variables declared in body of the class without static keyword can be described as ",MLT,"fields, member or instance variables, which belongs to particular object of the class[=]in jargon you can call them “template for the object structure”[=]you can refer tho them with Class.variable notation[=]you can refer tho them with this.variable notation",1

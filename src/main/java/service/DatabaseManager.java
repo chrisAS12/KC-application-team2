@@ -130,4 +130,7 @@ public class DatabaseManager {
             session.close();
         }
     }
+
+// FROM Questions Q WHERE Q.id = :1
+    // question_variants
 }
