@@ -1,6 +1,7 @@
 package com.example.KCbootcampapplication.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import com.example.KCbootcampapplication.service.DatabaseManager;
 

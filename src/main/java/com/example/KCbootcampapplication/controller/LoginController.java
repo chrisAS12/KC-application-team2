@@ -36,7 +36,7 @@ public class LoginController {
         if (user == null) {
             model.addAttribute("error", "Unable to login");
             model.addAttribute("hasError", true);
-            return new ModelAndView("redirect:/admin");
+            return new ModelAndView("/admin");
         }
         request.getSession().setAttribute(SessionData.User, user);
 
