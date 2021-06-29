@@ -1,29 +1,77 @@
 <!DOCTYPE html>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <html style="font-size: 16px;">
+
+<head>
+
 <Title>Welcome</Title>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+
+  <style>
+
+      html, body, section, div {
+         height: 100%;
+         font-family: sans-serif;
+      }
+
+      .btn-group button {
+          font: 30px Roboto, sans-serif;
+          line-height: 59px;
+          margin: 10px auto;
+          align-items: center;
+          text-align: center;
+          width: 350px;
+          height: 75px;
+          background-color: black;
+          color: white;
+          border: none;
+          border-radius: 10px;
+          display: block;
+          cursor: pointer;
+      }
+
+      .container {
+      display: table;
+      height: 100%;
+      width: 100%;
+      }
+
+      div {
+      display: table-cell;
+      width: 50%;
+      padding: 1rem;
+      }
+
+      .right-half {
+      vertical-align: middle;
+      background-color: #F1F1F1;
+      }
+
+  </style>
+
+</head>
 <body>
-<div class="mainContainer">
-</div>
-<div class="leftContainer">
-  <div>
-    <h3>
-      <a>Welcome to<br>
-        <span style="font-size: 3rem;">Bootcamp</span>
-        <br>
-        <span style="font-size: 3.75rem;">Knowledge check</span>
-        <br>
-      </a>
-    </h3>
-  </div>
-  <div class="rightContainer">
-    <h3>
-      <a>Select user type</a>
-    </h3>
-    <button type="button" class="btn btn-primary">Student</button>
-    <button type="button" class="btn btn-primary">Admin</button>
-  </div>
-</div>
+
+    <section class="container">
+        <div class="left-half">
+            <article>
+            <h3 style="margin:50px;">Welcome to<br>
+            <span style="font-size: 3rem;">Bootcamp</span>
+            <br>
+            <span style="font-size: 3.75 rem; color: #C620FC">Knowledge check</span>
+            </h3>
+            </article>
+        </div>
+        <div class="right-half">
+            <article>
+                <div class="btn-group">
+                    <h3 style="text-align:center;">Select user type</h3>
+                    <button>Student</button>
+                    <button>Admin</button>
+                </div>
+            </article>
+        </div>
+    </section>
+
 </body>
 </html>
