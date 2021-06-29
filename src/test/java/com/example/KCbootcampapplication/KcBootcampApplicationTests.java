@@ -7,11 +7,13 @@ import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.hibernate.SessionFactory;
 import org.junit.Assert;
+import org.springframework.test.context.ContextConfiguration;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @SpringBootTest
+@ContextConfiguration(locations = "classpath:hibernate.cfg.xml")
 class KcBootcampApplicationTests {
 
 	List<Object> testQuestions;
@@ -20,11 +22,19 @@ class KcBootcampApplicationTests {
 
 	@Test
 	void test00createUser(){
-		u = new User();
-		u.setEmail("test123@testtest.test");
-		u.setPassword("test");
-		u.setRole("student");
-		Assert.assertEquals("User info not ok","email: test123@testtest.test, role: student", "email: " + u.getEmail() + ", role: " + u.getRole());
+		try {
+			u = new User();
+			u.setEmail("test123@testtest.test");
+			u.setPassword("test");
+			u.setRole("student");
+			u.setLogin("test123");
+			Assert.assertEquals("User info not ok","email: test123@testtest.test, role: student", "email: " + u.getEmail() + ", role: " + u.getRole());
+			dm.insertUser(u.getEmail(),u.getPassword(), u.getLogin(), u.getRole());
+			System.out.println("User created");
+		}catch (Exception e){
+			e.printStackTrace();
+		}
+
 	}
 
 	@Test
@@ -50,7 +60,7 @@ class KcBootcampApplicationTests {
 
 	@Test
 	void test04DBMSaveQuestions(){
-		//dm.saveQuestions();
+		dm.saveQuestions(testQuestions);
 	}
 
 	@Test

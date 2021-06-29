@@ -48,13 +48,21 @@ public class DatabaseManager {
         return null;
     }
 
-    public boolean createUser(String email, String pw){   //NOT FINAL. just so I can test login
+    public boolean insertUser(String email, String pw, String login, String role){   //NOT FINAL. just so I can test login
         var session = factory.openSession();
         try {
-            String a = "CREATE USER ? identified by ?";
-            Query q1 = session.createQuery(a);
-            q1.setParameter(1,email);
-            q1.setParameter(2,pw);
+            User u = new User();
+            u.setLogin(login);
+            u.setEmail(email);
+            u.setPassword(pw);
+            u.setRole(role);
+//            String a = "insert into user (login,email,password,role) VALUES (?,?,?,?)";
+//            Query q1 = session.createQuery(a);
+//            q1.setParameter(1,login);
+//            q1.setParameter(2,email);
+//            q1.setParameter(3,pw);
+//            q1.setParameter(4,role);
+            session.save(u);
             return true;
         }catch (Exception e){
             e.printStackTrace();
@@ -167,6 +175,7 @@ public class DatabaseManager {
     public void createQuestion(){
         TestQuestion question = new TestQuestion();
     }
+
 
 // FROM Questions Q WHERE Q.id = :1
     // question_variants
