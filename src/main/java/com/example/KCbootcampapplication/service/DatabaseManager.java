@@ -56,16 +56,33 @@ public class DatabaseManager {
             u.setEmail(email);
             u.setPassword(pw);
             u.setRole(role);
-//            String a = "insert into user (login,email,password,role) VALUES (?,?,?,?)";
-//            Query q1 = session.createQuery(a);
-//            q1.setParameter(1,login);
-//            q1.setParameter(2,email);
-//            q1.setParameter(3,pw);
-//            q1.setParameter(4,role);
             session.save(u);
             return true;
         }catch (Exception e){
             e.printStackTrace();
+        }
+        finally {
+            session.close();
+        }
+        return false;
+    }
+
+    public boolean insertUser(String email, String pw, String login, String role,String name){   //NOT FINAL. just so I can test login
+        var session = factory.openSession();
+        try {
+            User u = new User();
+            u.setLogin(login);
+            u.setEmail(email);
+            u.setPassword(pw);
+            u.setRole(role);
+
+            session.save(u);
+            return true;
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        finally {
+            session.close();
         }
         return false;
     }
@@ -87,7 +104,7 @@ public class DatabaseManager {
         }
     }
 
-    public void saveQuestions(List <Object> items){
+    public void saveQuestions(List <TestQuestion> items){
 
         var session = factory.openSession();
         Transaction tx = null;

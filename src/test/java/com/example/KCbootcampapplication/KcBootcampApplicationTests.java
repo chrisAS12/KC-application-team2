@@ -1,5 +1,6 @@
 package com.example.KCbootcampapplication;
 
+import com.example.KCbootcampapplication.domain.TestQuestion;
 import com.example.KCbootcampapplication.domain.User;
 
 import com.example.KCbootcampapplication.service.DatabaseManager;
@@ -11,17 +12,18 @@ import org.springframework.test.context.ContextConfiguration;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Vector;
 
 @SpringBootTest
 @ContextConfiguration(locations = "classpath:hibernate.cfg.xml")
 class KcBootcampApplicationTests {
 
-	List<Object> testQuestions;
+	static List<TestQuestion> testQuestions;
 	DatabaseManager dm = new DatabaseManager();
-	User u;
+	static User u;
 
 	@Test
-	void test00createUser(){
+	void test00insertUser(){
 		try {
 			u = new User();
 			u.setEmail("test123@testtest.test");
@@ -30,7 +32,7 @@ class KcBootcampApplicationTests {
 			u.setLogin("test123");
 			Assert.assertEquals("User info not ok","email: test123@testtest.test, role: student", "email: " + u.getEmail() + ", role: " + u.getRole());
 			dm.insertUser(u.getEmail(),u.getPassword(), u.getLogin(), u.getRole());
-			System.out.println("User created");
+			System.out.println("User created" +  u.getId());
 		}catch (Exception e){
 			e.printStackTrace();
 		}
@@ -43,13 +45,19 @@ class KcBootcampApplicationTests {
 
 	@Test
 	void test02DBMLogin(){   //need to be able to create users to test this
-		//manager.login()
+		try {
+			dm.login(u.getEmail(),u.getPassword());
+			System.out.println("Login successful:" + u.getEmail() + ", " + u.getPassword());
+		}catch (Exception e){
+			e.printStackTrace();
+		}
 	}
 
 	@Test
 	void test03DBMSave(){
-		testQuestions = new ArrayList<>();
-		testQuestions.add(new String("test"));
+
+		testQuestions = new Vector<>();
+		//testQuestions.add();
 		try {
 			dm.save(testQuestions);
 
