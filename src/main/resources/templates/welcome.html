@@ -4,61 +4,53 @@
 <html style="font-size: 16px;">
 
 <head>
-
-<Title>Welcome</Title>
-
+    <Title>Welcome</Title>
     <link rel="stylesheet" type="text/css" href="../css/style.css">
-  <style>
-
-      html, body, section, div {
-         height: 100%;
-         font-family: sans-serif;
-      }
-
-      .container {
-      display: table;
-      height: 100%;
-      width: 100%;
-      }
-
-      div {
-      display: table-cell;
-      width: 50%;
-      padding: 1rem;
-      }
-
-      .right-half {
-      vertical-align: middle;
-      background-color: #F1F1F1;
-      }
-
-  </style>
-
+    <style>
+        html, body, section, div {
+            height: 100%;
+            font-family: sans-serif;
+        }
+        .container {
+            display: table;
+            height: 100%;
+            width: 100%;
+        }
+        div {
+            display: table-cell;
+            width: 50%;
+            padding: 1rem;
+        }
+        .right-half {
+            vertical-align: middle;
+            background-color: #F1F1F1;
+        }
+    </style>
 </head>
 <body>
 
-    <section class="container">
-        <div class="left-half">
-            <article>
+<section class="container">
+    <div class="left-half">
+        <article>
             <h3 style="margin:50px;">Welcome to<br>
-            <span style="font-size: 3rem;">Bootcamp</span>
-            <br>
-            <span style="font-size: 3.75rem; color: #C620FC">Knowledge check</span>
+                <span style="font-size: 3rem;">Bootcamp</span>
+                <br>
+                <span style="font-size: 3.75rem; color: #C620FC">Knowledge check</span>
             </h3>
-            </article>
-        </div>
-        <div class="right-half">
-            <article>
-                <div class="btn-group">
-                    <h3 style="text-align:center;">Select user type</h3>
-<!--                    should respond to /student-->
-                    <button>Student</button>
-<!--                    should respond to /admin-->
-                    <button>Admin</button>
-                </div>
-            </article>
-        </div>
-    </section>
+        </article>
+    </div>
+    <div class="right-half">
+        <article>
+            <div class="btn-group">
+                <h3 style="text-align:center;">Select user type</h3>
+                <!--                    should respond to /student-->
+                <input type="button" onclick="location.href='/student'" value="User">
+                <!--                    should respond to /admin-->
+                <input type="button" onclick="location.href='/admin'" value="Admin">
+            </div>
+        </article>
+    </div>
+</section>
 
 </body>
 </html>
