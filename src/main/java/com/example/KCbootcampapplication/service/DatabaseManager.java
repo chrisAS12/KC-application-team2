@@ -1,7 +1,7 @@
-package service;
-import domain.TestAnswer;
-import domain.TestQuestion;
-import domain.User;
+package com.example.KCbootcampapplication.service;
+import com.example.KCbootcampapplication.domain.TestAnswer;
+import com.example.KCbootcampapplication.domain.TestQuestion;
+import com.example.KCbootcampapplication.domain.User;
 import org.hibernate.HibernateException;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -28,7 +28,6 @@ public class DatabaseManager {
 
     public User login(String email, String password) {
         var session = factory.openSession();
-
         try {
             String hql = "FROM User U WHERE U.email = :email and U.password = MD5(:pwd)";
             Query query1 = session.createQuery(hql);
@@ -47,6 +46,28 @@ public class DatabaseManager {
             session.close();
         }
         return null;
+    }
+
+    public boolean insertUser(String email, String pw, String login, String role){   //NOT FINAL. just so I can test login
+        var session = factory.openSession();
+        try {
+            User u = new User();
+            u.setLogin(login);
+            u.setEmail(email);
+            u.setPassword(pw);
+            u.setRole(role);
+//            String a = "insert into user (login,email,password,role) VALUES (?,?,?,?)";
+//            Query q1 = session.createQuery(a);
+//            q1.setParameter(1,login);
+//            q1.setParameter(2,email);
+//            q1.setParameter(3,pw);
+//            q1.setParameter(4,role);
+            session.save(u);
+            return true;
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return false;
     }
 
     public void save(Object item) {
@@ -130,4 +151,32 @@ public class DatabaseManager {
             session.close();
         }
     }
+
+    public TestQuestion getQuestionsFromTestId(int testId){
+        var session = factory.openSession();
+        try {
+            String hql = "FROM TestQuestion T WHERE T.test_question_id = :testId";
+            Query query1 = session.createQuery(hql);
+
+            query1.setParameter("testId", testId);
+            var results = query1.list();
+
+            if (results.size() > 0) {
+                return (TestQuestion) results;
+            }
+        } catch (HibernateException ex) {
+            System.err.println(ex);
+        } finally {
+            session.close();
+        }
+        return null;
+    }
+
+    public void createQuestion(){
+        TestQuestion question = new TestQuestion();
+    }
+
+
+// FROM Questions Q WHERE Q.id = :1
+    // question_variants
 }

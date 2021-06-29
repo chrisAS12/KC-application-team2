@@ -1,4 +1,4 @@
-package dto;
+package com.example.KCbootcampapplication.dto;
 
 import lombok.Data;
 
