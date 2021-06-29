@@ -19,14 +19,14 @@ public class TestController {
         dbManager = new DatabaseManager();
     }
 
-    @GetMapping("/{testId}")
-    public String takeTestView(@PathVariable("testId") int testId, Model model) {
-
-     //   var questions = dbManager.getQuestionsFromTestId(testId);
-     //   model.addAttribute(questions);
-        // FIXME
-        return "";
-    }
+//    @GetMapping("/{testId}")
+//    public String takeTestView(@PathVariable("testId") int testId, Model model) {
+//
+//        var questions = dbManager.getQuestionsFromTestId(testId);
+//        model.addAttribute(questions);
+//        // FIXME
+//        return "";
+//    }
 
     @PostMapping("/takeTest")
     public ModelAndView takeTest(Model model) {

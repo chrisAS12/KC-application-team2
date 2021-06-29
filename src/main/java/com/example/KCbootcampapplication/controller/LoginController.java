@@ -21,7 +21,7 @@ public class LoginController {
     }
 
     @GetMapping("/admin")
-    public String getIndex(Model model) {
+    public String getAdminLoginPage(Model model) {
         model.addAttribute("error", "");
         model.addAttribute("hasError", false);
         return "admin";
@@ -29,7 +29,7 @@ public class LoginController {
 
     //HttpSession session
     @PostMapping("/admin")
-    public ModelAndView login(LoginDto userData, Model model, HttpServletRequest request) {
+    public ModelAndView adminLogin(LoginDto userData, Model model, HttpServletRequest request) {
 
         var user = dm.login(userData.getEmail(), userData.getPwd());
 
@@ -44,4 +44,29 @@ public class LoginController {
 
         return new ModelAndView("redirect:/tests"); // TODO: 6/28/2021  Check correct page for redirect
         }
+
+    @GetMapping("/student")
+    public String getStudentLoginPage(Model model) {
+        model.addAttribute("error", "");
+        model.addAttribute("hasError", false);
+        return "student";
+    }
+
+    //HttpSession session
+    @PostMapping("/student")
+    public ModelAndView studentLogin(LoginDto userData, Model model, HttpServletRequest request) {
+
+        var user = dm.login(userData.getEmail(), userData.getPwd());
+
+        if (user == null) {
+            model.addAttribute("error", "Unable to login");
+            model.addAttribute("hasError", true);
+            return new ModelAndView("/student");
+        }
+        request.getSession().setAttribute(SessionData.User, user);
+
+        model.addAttribute("user", user);
+
+        return new ModelAndView("redirect:/tests"); // TODO: 6/28/2021  Check correct page for redirect
+    }
     }

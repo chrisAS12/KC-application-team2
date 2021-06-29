@@ -27,9 +27,9 @@ public class TestQuestion {
     @Column(name = "question_correct_answer")
     private String correctAnswer;
 
-    //@ManyToOne(cascade = CascadeType.DETACH, fetch = FetchType.EAGER)
-    //@JoinColumn(name="kc_question_id", referencedColumnName = "test_id", nullable = false)
-    //private KnowledgeCheck knowledgeCheck;
+//    @ManyToOne(cascade = CascadeType.DETACH, fetch = FetchType.EAGER)
+//    @JoinColumn(name="kc_question_id", referencedColumnName = "test_id", nullable = false)
+//    private KnowledgeCheck knowledgeCheck;
 
     public int getId() {
         return id;
