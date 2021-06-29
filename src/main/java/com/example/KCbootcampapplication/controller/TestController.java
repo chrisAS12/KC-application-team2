@@ -22,8 +22,8 @@ public class TestController {
     @GetMapping("/{testId}")
     public String takeTestView(@PathVariable("testId") int testId, Model model) {
 
-        var questions = dbManager.getQuestionsFromTestId(testId);
-        model.addAttribute(questions);
+     //   var questions = dbManager.getQuestionsFromTestId(testId);
+     //   model.addAttribute(questions);
         // FIXME
         return "";
     }
