@@ -1,11 +1,10 @@
 package com.example.KCbootcampapplication;
 
-import domain.User;
-import org.junit.jupiter.api.BeforeEach;
+import com.example.KCbootcampapplication.domain.User;
+
+import com.example.KCbootcampapplication.service.DatabaseManager;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
-import service.DatabaseManager;
-import service.DatabaseManager;
 import org.hibernate.SessionFactory;
 import org.junit.Assert;
 
