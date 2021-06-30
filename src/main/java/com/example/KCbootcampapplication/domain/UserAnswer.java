@@ -10,14 +10,17 @@ import javax.persistence.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name="answers")
-public class TestAnswer {
+@Table(name="user_answers")
+public class UserAnswer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "answer_id")
+    @Column(name = "user_answer_id")
     private int id;
-    @Column(name = "answer_text")
-    private String answers; // "A B C D" ANSWERS.SPLIT(STRING)
-    @Column(name = "answer_correct")
-    private String correctAnswer;
+
+    @Column(name = "user_answer")
+    private String answer; // "A B C D" ANSWERS.SPLIT(STRING)
+
+    @Column(name = "user_answer_iscorrect")
+    private boolean isCorrect;
+
 }

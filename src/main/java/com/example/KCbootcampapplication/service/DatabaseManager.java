@@ -1,5 +1,5 @@
 package com.example.KCbootcampapplication.service;
-import com.example.KCbootcampapplication.domain.TestAnswer;
+import com.example.KCbootcampapplication.domain.UserAnswer;
 import com.example.KCbootcampapplication.domain.TestQuestion;
 import com.example.KCbootcampapplication.domain.User;
 import org.hibernate.HibernateException;
@@ -16,7 +16,7 @@ public class DatabaseManager {
     public DatabaseManager() {
         try {
             factory = new Configuration().configure()
-                    .addAnnotatedClass(TestAnswer.class)
+                    .addAnnotatedClass(UserAnswer.class)
                     .addAnnotatedClass(TestQuestion.class)
                     .addAnnotatedClass(User.class)
                     .buildSessionFactory();
@@ -29,7 +29,7 @@ public class DatabaseManager {
     public User login(String email, String password) {
         var session = factory.openSession();
         try {
-            String hql = "FROM User U WHERE U.email = :email and U.password = MD5(:pwd)";
+            String hql = "FROM User U WHERE U.email = :email and U.password = SHA1(:pwd)";
             Query query1 = session.createQuery(hql);
 
             query1.setParameter("email", email);
