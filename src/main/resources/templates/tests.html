@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>All tests.</title>
+  <link rel="stylesheet" th:href="@{/css/styles.css}"/>
+</head>
+<body>
+<h1>All tests</h1>
+<div th:unless="${#lists.isEmpty(tests)}">
+  <h2> Here are they: </h2>
+  <table>
+    <tbody>
+    <tr th:each="tests : ${tests}">
+      <td th:text="${tests.kcName}"></td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+</body>
+</html>

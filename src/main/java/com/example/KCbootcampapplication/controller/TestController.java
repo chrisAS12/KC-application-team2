@@ -1,5 +1,6 @@
 package com.example.KCbootcampapplication.controller;
 
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,20 +20,32 @@ public class TestController {
         dbManager = new DatabaseManager();
     }
 
-//    @GetMapping("/{testId}")
-//    public String takeTestView(@PathVariable("testId") int testId, Model model) {
-//
-//        var questions = dbManager.getQuestionsFromTestId(testId);
-//        model.addAttribute(questions);
-//        // FIXME
-//        return "";
-//    }
+    /* @PreAuthorize("hasRole('user')")
+    @GetMapping("/takeTest/{knowledgeCheckID}")
+    public String takeTestView(@PathVariable("knowledgeCheckID") int knowledgeCheckID, Model model) {
+        var questions = dbManager.getQuestionsFromTestId(knowledgeCheckID);
+        model.addAttribute("questions", questions);
+        return "knowledge_check";
+    }
+    */
+    @GetMapping("/takeTest")
+    public String takeTestView(Model model) {
+        return "knowledge_check";
+    }
 
-    @PostMapping("/takeTest")
+    // @PreAuthorize("hasRole('user')")
+    @PostMapping("/testTaken/{testId}")
     public ModelAndView takeTest(Model model) {
 
         // TODO
 
         return null;
+    }
+
+    @GetMapping("/")
+    public String testPage(Model model){
+        model.addAttribute("allTests", dbManager.getKnowledgeChecksByNames());
+        System.err.println(dbManager.getKnowledgeChecksByNames());
+        return "tests";
     }
 }
