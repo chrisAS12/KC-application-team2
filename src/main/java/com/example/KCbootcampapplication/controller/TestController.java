@@ -42,8 +42,10 @@ public class TestController {
         return null;
     }
 
-    @GetMapping("/tests")
+    @GetMapping("/")
     public String testPage(Model model){
+        model.addAttribute("allTests", dbManager.getKnowledgeChecksByNames());
+        System.err.println(dbManager.getKnowledgeChecksByNames());
         return "tests";
     }
 }

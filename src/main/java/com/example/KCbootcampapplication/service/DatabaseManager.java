@@ -190,6 +190,18 @@ public class DatabaseManager {
         return null;
     }
 
+    public List<KnowledgeCheck> getKnowledgeChecksByNames(){
+        var session = factory.openSession();
+        try {
+            return session.createQuery("SELECT a FROM KnowledgeCheck a", KnowledgeCheck.class).getResultList();
+        } catch (HibernateException ex) {
+            System.err.println(ex);
+        } finally {
+            session.close();
+        }
+        return null;
+    }
+
     public void createQuestion(){
         TestQuestion question = new TestQuestion();
     }
