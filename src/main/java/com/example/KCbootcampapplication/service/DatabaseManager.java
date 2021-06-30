@@ -51,7 +51,7 @@ public class DatabaseManager {
         return null;
     }
 
-    public boolean insertUser(String email, String pw, String login, String role){   //NOT FINAL. just so I can test login
+    public boolean insertUser(String email, String pw, String login, String role){
         var session = factory.openSession();
         try {
             User u = new User();
@@ -70,7 +70,7 @@ public class DatabaseManager {
         return false;
     }
 
-    public boolean insertUser(String email, String pw, String login, String role,String name){   //NOT FINAL. just so I can test login
+    public boolean insertUser(String email, String pw, String login, String role,String name){
         var session = factory.openSession();
         try {
             User u = new User();
@@ -78,7 +78,7 @@ public class DatabaseManager {
             u.setEmail(email);
             u.setPassword(pw);
             u.setRole(role);
-
+            u.setName(name);
             session.save(u);
             return true;
         }catch (Exception e){
@@ -130,7 +130,6 @@ public class DatabaseManager {
     public void update(Object item) {
         var session = factory.openSession();
         Transaction tx = null;
-
         try {
             tx = session.beginTransaction();
             session.update(item);
