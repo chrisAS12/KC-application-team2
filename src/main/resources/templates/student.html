@@ -37,9 +37,13 @@
           <label for="pwd" class="form-label">Password</label>
           <input type="password" class="form-control" id="pwd" name="pwd">
         </div>
-        <button type="submit" class="btn btn-primary">Login</button>
+        <button type="submit"
+                class="btn btn-primary"
+                style="border: none; border-radius: 10px;
+                        background-color: black;">Login</button>
       </form>
-      <div style="margin-top: 10px" th:if="${hasError}" class="alert alert-danger" role="alert" th:text="${error}">
+      <div style="margin-top: 10px; background-color: #F3CFFF; border-color: #C620FC;"
+           th:if="${hasError}" class="alert alert-danger" role="alert" th:text="${error}">
       </div>
     </div>
     <div class="col">
