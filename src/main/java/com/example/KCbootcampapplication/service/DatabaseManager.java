@@ -1,8 +1,9 @@
 package com.example.KCbootcampapplication.service;
 import com.example.KCbootcampapplication.domain.KnowledgeCheck;
-import com.example.KCbootcampapplication.domain.TestAnswer;
+import com.example.KCbootcampapplication.domain.UserAnswer;
 import com.example.KCbootcampapplication.domain.TestQuestion;
 import com.example.KCbootcampapplication.domain.User;
+
 import org.hibernate.HibernateException;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -17,7 +18,7 @@ public class DatabaseManager {
     public DatabaseManager() {
         try {
             factory = new Configuration().configure()
-                    .addAnnotatedClass(TestAnswer.class)
+                    .addAnnotatedClass(UserAnswer.class)
                     .addAnnotatedClass(TestQuestion.class)
                     .addAnnotatedClass(User.class)
                     .addAnnotatedClass(KnowledgeCheck.class)
@@ -31,7 +32,7 @@ public class DatabaseManager {
     public User login(String email, String password) {
         var session = factory.openSession();
         try {
-            String hql = "FROM User U WHERE U.email = :email and U.password = MD5(:pwd)";
+            String hql = "FROM User U WHERE U.email = :email and U.password = SHA1(:pwd)";
             Query query1 = session.createQuery(hql);
 
             query1.setParameter("email", email);
@@ -77,7 +78,7 @@ public class DatabaseManager {
             u.setEmail(email);
             u.setPassword(pw);
             u.setRole(role);
-            u.setName(name);
+
             session.save(u);
             return true;
         }catch (Exception e){
@@ -143,7 +144,6 @@ public class DatabaseManager {
             session.close();
         }
     }
-
 
     public void updateQuestion(TestQuestion testQuestion) {
         if(testQuestion.getId() == 0) {

@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -31,4 +32,8 @@ public class User {
 
     @Column(name = "user_name")
     private String name;
+
+    @OneToMany(cascade = CascadeType.DETACH, fetch = FetchType.EAGER)
+    @JoinColumn(name="user_id", referencedColumnName = "user_id", nullable = false)
+    private List<UserAnswer> userAnswers;
 }
