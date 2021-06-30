@@ -1,4 +1,5 @@
 package com.example.KCbootcampapplication.service;
+import com.example.KCbootcampapplication.domain.KnowledgeCheck;
 import com.example.KCbootcampapplication.domain.TestAnswer;
 import com.example.KCbootcampapplication.domain.TestQuestion;
 import com.example.KCbootcampapplication.domain.User;
@@ -19,6 +20,7 @@ public class DatabaseManager {
                     .addAnnotatedClass(TestAnswer.class)
                     .addAnnotatedClass(TestQuestion.class)
                     .addAnnotatedClass(User.class)
+                    .addAnnotatedClass(KnowledgeCheck.class)
                     .buildSessionFactory();
         } catch (Throwable ex) {
             System.err.println("Failed to create sessionFactory object." + ex);
@@ -75,7 +77,7 @@ public class DatabaseManager {
             u.setEmail(email);
             u.setPassword(pw);
             u.setRole(role);
-
+            u.setName(name);
             session.save(u);
             return true;
         }catch (Exception e){
@@ -105,10 +107,8 @@ public class DatabaseManager {
     }
 
     public void saveQuestions(List <TestQuestion> items){
-
         var session = factory.openSession();
         Transaction tx = null;
-
         try {
             tx = session.beginTransaction();
             for ( var item: items
@@ -144,6 +144,7 @@ public class DatabaseManager {
         }
     }
 
+
     public void updateQuestion(TestQuestion testQuestion) {
         if(testQuestion.getId() == 0) {
             return;
@@ -169,25 +170,25 @@ public class DatabaseManager {
         }
     }
 
-//    public TestQuestion getQuestionsFromTestId(int testId){
-//        var session = factory.openSession();
-//        try {
-//            String hql = "FROM TestQuestion T WHERE T.test_question_id = :testId";
-//            Query query1 = session.createQuery(hql);
-//
-//            query1.setParameter("testId", testId);
-//            var results = query1.list();
-//
-//            if (results.size() > 0) {
-//                return (TestQuestion) results;
-//            }
-//        } catch (HibernateException ex) {
-//            System.err.println(ex);
-//        } finally {
-//            session.close();
-//        }
-//        return null;
-//    }
+    public TestQuestion getQuestionsFromTestId(int testId){
+        var session = factory.openSession();
+        try {
+            String hql = "FROM TestQuestion WHERE  TestQuestion.id = :testId";
+            Query query1 = session.createQuery(hql);
+
+            query1.setParameter("testId", testId);
+            var results = query1.list();
+
+            if (results.size() > 0) {
+                return (TestQuestion) results;
+            }
+        } catch (HibernateException ex) {
+            System.err.println(ex);
+        } finally {
+            session.close();
+        }
+        return null;
+    }
 
     public void createQuestion(){
         TestQuestion question = new TestQuestion();

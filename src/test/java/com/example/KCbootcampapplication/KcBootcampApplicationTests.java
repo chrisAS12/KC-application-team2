@@ -1,31 +1,31 @@
 package com.example.KCbootcampapplication;
 
+import com.example.KCbootcampapplication.domain.KnowledgeCheck;
 import com.example.KCbootcampapplication.domain.TestQuestion;
 import com.example.KCbootcampapplication.domain.User;
-
 import com.example.KCbootcampapplication.service.DatabaseManager;
+import org.junit.Before;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.hibernate.SessionFactory;
 import org.junit.Assert;
 import org.springframework.test.context.ContextConfiguration;
-
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Vector;
 
-@SpringBootTest
+
 @ContextConfiguration(locations = "classpath:hibernate.cfg.xml")
-class KcBootcampApplicationTests {
+class KcBootcampApplicationTests{
 
-	static List<TestQuestion> testQuestions;
+	List<TestQuestion> testQuestions;
 	DatabaseManager dm = new DatabaseManager();
-	static User u;
+	User u = new User();
+	KnowledgeCheck kc;
+	TestQuestion tq;
 
 	@Test
-	void test00insertUser(){
+	void test00_insertUser(){
 		try {
-			u = new User();
 			u.setEmail("test123@testtest.test");
 			u.setPassword("test");
 			u.setRole("student");
@@ -36,16 +36,19 @@ class KcBootcampApplicationTests {
 		}catch (Exception e){
 			e.printStackTrace();
 		}
-
 	}
 
 	@Test
-	void test01contextLoads(){
+	void test01_contextLoads(){
 	}
 
 	@Test
-	void test02DBMLogin(){   //need to be able to create users to test this
+	void test02_DBMLogin(){
 		try {
+			u.setEmail("test123@testtest.test");
+			u.setPassword("test");
+			u.setRole("student");
+			u.setLogin("test123");
 			dm.login(u.getEmail(),u.getPassword());
 			System.out.println("Login successful:" + u.getEmail() + ", " + u.getPassword());
 		}catch (Exception e){
@@ -54,13 +57,25 @@ class KcBootcampApplicationTests {
 	}
 
 	@Test
-	void test03DBMSave(){
+	void test03_DBMSave(){
+		tq = new TestQuestion();
+		kc = new KnowledgeCheck();
 
-		testQuestions = new Vector<>();
-		//testQuestions.add();
+		u.setEmail("test456@testtest.test");
+		u.setPassword("test456");
+		u.setRole("student");
+		u.setLogin("test456");
+		tq.setQuestion("what is life");
+		tq.setType("test");
+		kc.setKcName("Test");
+		kc.setQuestions(testQuestions);
+		kc.setIsShow(true);
+		kc.setStartTime(LocalDateTime.now());
+		kc.setFinishTime(LocalDateTime.now());
 		try {
-			dm.save(testQuestions);
-
+			dm.save(u);
+			dm.save(kc);
+			dm.save(tq);
 		}catch (Exception e){
 			e.printStackTrace();
 		}
@@ -68,6 +83,9 @@ class KcBootcampApplicationTests {
 
 	@Test
 	void test04DBMSaveQuestions(){
+		testQuestions = new ArrayList<>();
+		tq = new TestQuestion();
+		testQuestions.add(tq);
 		dm.saveQuestions(testQuestions);
 	}
 
@@ -83,7 +101,10 @@ class KcBootcampApplicationTests {
 
 	@Test
 	void test07DBMDelete(){
-		//dm.delete();
+		kc.setQuestions(testQuestions);
+		dm.delete(u);
+		dm.delete(kc);
+		dm.delete(testQuestions);
 	}
 
 }

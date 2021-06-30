@@ -17,11 +17,11 @@
         </property>
 
         <property name="hibernate.connection.username">
-            root
+            test
         </property>
 
         <property name="hibernate.connection.password">
-            root
+            test123
         </property>
 
 <!--         List of XML mapping files -->
