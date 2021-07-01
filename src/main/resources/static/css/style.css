@@ -15,7 +15,7 @@
     cursor: pointer;
 }
 
-.btn-big button:focus {
+.btn-big button:hover {
     background-color: #C620FC;
 }
 
@@ -32,7 +32,7 @@
     cursor: pointer;
 }
 
-.btn-small button:focus {
+.btn-small button:hover {
     background-color: #C620FC;
 }
 
