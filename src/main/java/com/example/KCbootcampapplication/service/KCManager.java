@@ -4,6 +4,7 @@ import com.example.KCbootcampapplication.domain.TestQuestion;
 import com.example.KCbootcampapplication.domain.User;
 import com.example.KCbootcampapplication.domain.UserAnswer;
 import org.hibernate.HibernateException;
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
@@ -41,5 +42,25 @@ public class KCManager {
             session.close();
         }
         return new ArrayList<>();
+    }
+
+    private List <TestQuestion> getKnowledgeCheck2(){
+        var session = factory1.openSession();
+        var query = "FROM TestQuestion T where T.id >=21 and T.id <=40 ORDER BY T.id asc";
+
+        try {
+            return session.createQuery(query).list();
+        } catch (HibernateException ex) {
+            System.err.println(ex);
+        } finally {
+            session.close();
+        }
+        return new ArrayList<>();
+    }
+
+    //need to call all 10 getKC methods here. Then can call this method in controller
+    public void showKnowledgeChecks(){
+    getKnowledgeCheck1();
+    getKnowledgeCheck2();
     }
 }
