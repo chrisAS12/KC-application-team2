@@ -20,6 +20,7 @@ public class DatabaseManager {
             factory = new Configuration().configure()
                     .addAnnotatedClass(UserAnswer.class)
                     .addAnnotatedClass(TestQuestion.class)
+                    .addAnnotatedClass(KnowledgeCheck.class)
                     .addAnnotatedClass(User.class)
                     .addAnnotatedClass(KnowledgeCheck.class)
                     .buildSessionFactory();
