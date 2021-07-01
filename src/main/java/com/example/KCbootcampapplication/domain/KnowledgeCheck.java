@@ -15,7 +15,7 @@ import java.util.List;
 public class KnowledgeCheck {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "test_id")
+    @Column(name = "kc_id")
     private Integer id;
 
     @Column(name = "kc_name")
@@ -30,8 +30,12 @@ public class KnowledgeCheck {
     @Column(name = "kc_finish_time")
     private LocalDateTime finishTime;
 
-    @OneToMany(cascade = CascadeType.DETACH, fetch = FetchType.EAGER)
-    @JoinColumn(name="kc_question_id", referencedColumnName = "test_id", nullable = false)
-    private List <TestQuestion> questions;
+    //Knowledge Check Teacher relationship
+    @ManyToOne(fetch=FetchType.LAZY) // TODO: 7/1/2021 need to check join 
+    @JoinColumn(name="user_id")
+    private User user;
 
+    // Quiz Question RelationShip
+    @OneToMany(mappedBy = "knowledgeCheck") // TODO: 7/1/2021 need to check this line of code (mapped by) 
+    private List<Question> question;
 }

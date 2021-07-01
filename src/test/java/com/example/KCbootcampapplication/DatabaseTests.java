@@ -1,7 +1,7 @@
 package com.example.KCbootcampapplication;
 
 import com.example.KCbootcampapplication.domain.KnowledgeCheck;
-import com.example.KCbootcampapplication.domain.TestQuestion;
+import com.example.KCbootcampapplication.domain.Question;
 import com.example.KCbootcampapplication.domain.User;
 import com.example.KCbootcampapplication.service.DatabaseManager;
 import org.junit.Assert;
@@ -15,11 +15,11 @@ import java.util.List;
 @ContextConfiguration(locations = "classpath:hibernate.cfg.xml")
 public class DatabaseTests {
 
-    List<TestQuestion> testQuestions;
+    List<Question> questions;
     DatabaseManager dm = new DatabaseManager();
     User u = new User();
     KnowledgeCheck kc;
-    TestQuestion tq;
+    Question tq;
 
     @Test
     void test00_insertUser(){
@@ -52,23 +52,23 @@ public class DatabaseTests {
 
     @Test
     void test03_DBMSave(){
-        tq = new TestQuestion();
+        tq = new Question();
         kc = new KnowledgeCheck();
-        testQuestions = new ArrayList<>();
+        questions = new ArrayList<>();
         u.setEmail("test456@testtest.test");
         u.setPassword("test456");
         u.setRole("student");
         u.setLogin("test456");
         tq.setQuestion("what is life");
         tq.setType("test");
-        testQuestions.add(tq);
+        questions.add(tq);
         kc.setKcName("Test");
-        kc.setQuestions(testQuestions);
+        kc.setQuestions(questions);
         kc.setIsShow(true);
         kc.setStartTime(LocalDateTime.now());
         kc.setFinishTime(LocalDateTime.now());
         try {
-            dm.save(testQuestions);
+            dm.save(questions);
             dm.save(u);
             dm.save(kc);
             dm.save(tq);
@@ -79,10 +79,10 @@ public class DatabaseTests {
 
     @Test
     void test04_DBMSaveQuestions(){
-        testQuestions = new ArrayList<>();
-        tq = new TestQuestion();
-        testQuestions.add(tq);
-        dm.saveQuestions(testQuestions);
+        questions = new ArrayList<>();
+        tq = new Question();
+        questions.add(tq);
+        dm.saveQuestions(questions);
     }
 
     @Test
@@ -98,10 +98,10 @@ public class DatabaseTests {
     @Test
     void test07DBMDelete(){
         kc = new KnowledgeCheck();
-        testQuestions = new ArrayList<>();
+        questions = new ArrayList<>();
         kc.setKcName("Test");
-        testQuestions.add(tq);
-        kc.setQuestions(testQuestions);
+        questions.add(tq);
+        kc.setQuestions(questions);
         kc.setIsShow(true);
         kc.setStartTime(LocalDateTime.now());
         kc.setFinishTime(LocalDateTime.now());

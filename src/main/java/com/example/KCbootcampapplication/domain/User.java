@@ -18,22 +18,21 @@ public class User {
     @Column(name = "user_id")
     private int id;
 
-    @Column(name = "user_login")
+    @Column(name = "user_login", nullable=false)
     private String login;
 
-    @Column(name = "user_email")
+    @Column(name = "user_email", nullable=false)
     private String email;
 
-    @Column(name = "user_password") // password should be encrypted in MD5
+    @Column(name = "user_password", nullable=false)
     private String password;
 
-    @Column(name = "user_role")
+    @Column(name = "user_role", nullable=false)
     private String role;
 
-    @Column(name = "user_name")
+    @Column(name = "user_name", nullable=false)
     private String name;
 
-    @OneToMany(cascade = CascadeType.DETACH, fetch = FetchType.EAGER)
-    @JoinColumn(name="user_id", referencedColumnName = "user_id", nullable = false)
-    private List<UserAnswer> userAnswers;
+    @OneToMany(mappedBy = "user")  // TODO: 7/1/2021 need to check this join
+    List<KnowledgeCheck> knowledgeChecks;
 }
