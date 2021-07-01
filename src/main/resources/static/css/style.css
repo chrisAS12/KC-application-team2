@@ -1,4 +1,4 @@
-
+/* Buttons */
 .btn-group button, input[type=button] {
     font: 30px Roboto, sans-serif;
     line-height: 59px;
@@ -13,4 +13,14 @@
     border-radius: 10px;
     display: block;
     cursor: pointer;
+}
+
+/* Text formatting */
+.text-inner-shadow {
+    color: transparent;
+    background: black;
+    -webkit-background-clip: text;
+    text-shadow: 0 1px 1px rgba(198,32,252,0.95);
+    text-align: center;
+    font-weight: bold;
 }
