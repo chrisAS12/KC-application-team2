@@ -38,7 +38,6 @@ public class DatabaseManager {
 
             query1.setParameter("email", email);
             query1.setParameter("pwd", password);
-
             var results = query1.list();
 
             if (results.size() > 0) {
@@ -194,7 +193,8 @@ public class DatabaseManager {
     public List<KnowledgeCheck> getKnowledgeChecksByNames(){
         var session = factory.openSession();
         try {
-            return session.createQuery("SELECT a FROM KnowledgeCheck a", KnowledgeCheck.class).getResultList();
+            // FIXME
+           //return session.createQuery("SELECT a FROM KnowledgeCheck a", KnowledgeCheck.class).getResultList();
         } catch (HibernateException ex) {
             System.err.println(ex);
         } finally {

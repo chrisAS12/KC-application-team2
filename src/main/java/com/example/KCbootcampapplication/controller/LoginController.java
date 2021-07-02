@@ -30,20 +30,17 @@ public class LoginController {
     //HttpSession session
     @PostMapping("/admin")
     public ModelAndView adminLogin(LoginDto userData, Model model, HttpServletRequest request) {
-
+       // System.err.println(userData.getEmail() + "  " + userData.getPwd());
         var user = dm.login(userData.getEmail(), userData.getPwd());
-        System.err.println(user);
         if (user == null) {
             model.addAttribute("error", "Unable to login");
             model.addAttribute("hasError", true);
             return new ModelAndView("/admin");
         }
         if (user.getRole().equals("adm")) {
-            System.err.println("in hre bro");
             request.getSession().setAttribute(SessionData.admUser, user);
-
             model.addAttribute("user", user);
-            return new ModelAndView("redirect:/tests"); // TODO: 6/28/2021  Check correct page for redirect
+            return new ModelAndView("redirect:/tests/"); // TODO: 6/28/2021  Check correct page for redirect
         }
         return new ModelAndView("/admin");
     }
@@ -71,7 +68,7 @@ public class LoginController {
 
             model.addAttribute("user", user);
 
-            return new ModelAndView("redirect:/tests"); // TODO: 6/28/2021  Check correct page for redirect
+            return new ModelAndView("redirect:/tests/"); // TODO: 6/28/2021  Check correct page for redirect
         }
         return new ModelAndView("/student");
     }
