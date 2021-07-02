@@ -5,30 +5,15 @@
 
 <head>
     <Title>Welcome</Title>
-    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}">
+    <link href="../static/css/style.css" th:href="@{/css/style.css}" rel="stylesheet"/>
     <style>
-        html, body, section, div {
-            height: 100%;
-            font-family: sans-serif;
-        }
-        .container {
-            display: table;
-            height: 100%;
-            width: 100%;
-        }
-        div {
-            display: table-cell;
-            width: 50%;
-            padding: 1rem;
-        }
-        .right-half {
-            vertical-align: middle;
-            background-color: #F1F1F1;
-        }
+        html, body, section, div {height: 100%; font-family: sans-serif;}
+        .container               {display: table; height: 100%; width: 100%;}
+        div                      {display: table-cell; width: 50%; padding: 1rem;}
+        .right-half              {vertical-align: middle;background-color: #F1F1F1;}
     </style>
 </head>
 <body>
-
 <section class="container">
     <div class="left-half">
         <article>
@@ -41,16 +26,13 @@
     </div>
     <div class="right-half">
         <article>
-            <div class="btn-group">
-                <h3 style="text-align:center;">Select user type</h3>
-                <!--                    should respond to /student-->
-                <input type="button" onclick="location.href='/student'" value="User">
-                <!--                    should respond to /admin-->
-                <input type="button" onclick="location.href='/admin'" value="Admin">
-            </div>
+            <h3 style="text-align:center;">Select user type</h3>
+            <!--                    should respond to /student-->
+            <input type="button" onclick="location.href='/student'" value="User">
+            <!--                    should respond to /admin-->
+            <input type="button" onclick="location.href='/admin'" value="Admin">
         </article>
     </div>
 </section>
-
 </body>
 </html>

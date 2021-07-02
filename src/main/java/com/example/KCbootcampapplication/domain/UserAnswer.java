@@ -6,7 +6,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
-@Data
+@Data // TODO: 7/1/2021 Do we need this class now? 
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity

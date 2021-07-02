@@ -1,6 +1,6 @@
 package com.example.KCbootcampapplication.service;
 import com.example.KCbootcampapplication.domain.KnowledgeCheck;
-import com.example.KCbootcampapplication.domain.TestQuestion;
+import com.example.KCbootcampapplication.domain.Question;
 import com.example.KCbootcampapplication.domain.User;
 import com.example.KCbootcampapplication.domain.UserAnswer;
 import org.hibernate.HibernateException;
@@ -18,7 +18,7 @@ public class KCManager {
         try {
             factory1 = new Configuration().configure()
                     .addAnnotatedClass(UserAnswer.class)
-                    .addAnnotatedClass(TestQuestion.class)
+                    .addAnnotatedClass(Question.class)
                     .addAnnotatedClass(KnowledgeCheck.class)
                     .addAnnotatedClass(User.class)
                     .buildSessionFactory();
@@ -28,10 +28,10 @@ public class KCManager {
         }
     }
 
-    //same for all 10 Knowledge Checks, need to correct only range of question id
-    private List <TestQuestion> getKnowledgeCheck1(){
+    //same for all 10 Knowledge Checks, need to correct only number of Q.knowledgeCheck.id
+    private List <Question> getKnowledgeCheck1(){
         var session = factory1.openSession();
-        var query = "FROM TestQuestion T where T.id >=1 and T.id <=20 ORDER BY T.id asc";
+        var query = "FROM Question Q where Q.knowledgeCheck.id = 1";
 
         try {
             return session.createQuery(query).list();
@@ -41,5 +41,25 @@ public class KCManager {
             session.close();
         }
         return new ArrayList<>();
+    }
+
+    private List <Question> getKnowledgeCheck2(){
+        var session = factory1.openSession();
+        var query = "FROM Question Q where Q.knowledgeCheck.id = 2";
+
+        try {
+            return session.createQuery(query).list();
+        } catch (HibernateException ex) {
+            System.err.println(ex);
+        } finally {
+            session.close();
+        }
+        return new ArrayList<>();
+    }
+
+    // TODO: 7/1/2021 need to call all 10 getKC methods here. Then can call this method in controller
+    public void showKnowledgeChecks(){
+    getKnowledgeCheck1();
+    getKnowledgeCheck2();
     }
 }

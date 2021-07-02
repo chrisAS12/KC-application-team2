@@ -1,7 +1,7 @@
 package com.example.KCbootcampapplication.service;
 import com.example.KCbootcampapplication.domain.KnowledgeCheck;
 import com.example.KCbootcampapplication.domain.UserAnswer;
-import com.example.KCbootcampapplication.domain.TestQuestion;
+import com.example.KCbootcampapplication.domain.Question;
 import com.example.KCbootcampapplication.domain.User;
 
 import org.hibernate.HibernateException;
@@ -19,7 +19,7 @@ public class DatabaseManager {
         try {
             factory = new Configuration().configure()
                     .addAnnotatedClass(UserAnswer.class)
-                    .addAnnotatedClass(TestQuestion.class)
+                    .addAnnotatedClass(Question.class)
                     .addAnnotatedClass(KnowledgeCheck.class)
                     .addAnnotatedClass(User.class)
                     .addAnnotatedClass(KnowledgeCheck.class)
@@ -108,7 +108,7 @@ public class DatabaseManager {
         }
     }
 
-    public void saveQuestions(List <TestQuestion> items){
+    public void saveQuestions(List <Question> items){
         var session = factory.openSession();
         Transaction tx = null;
         try {
@@ -145,11 +145,11 @@ public class DatabaseManager {
         }
     }
 
-    public void updateQuestion(TestQuestion testQuestion) {
-        if(testQuestion.getId() == 0) {
+    public void updateQuestion(Question question) {
+        if(question.getId() == 0) {
             return;
         }
-        update(testQuestion);
+        update(question);
     }
 
     public void delete(Object obj) {
@@ -170,7 +170,7 @@ public class DatabaseManager {
         }
     }
 
-    public TestQuestion getQuestionsFromTestId(int knowledgeCheckId){
+    public Question getQuestionsFromTestId(int knowledgeCheckId){
         var session = factory.openSession();
         try {
             // FIXME
@@ -181,7 +181,7 @@ public class DatabaseManager {
             var results = query1.list();
 
             if (results.size() > 0) {
-                return (TestQuestion) results;
+                return (Question) results;
             }
         } catch (HibernateException ex) {
             System.err.println(ex);
@@ -204,7 +204,7 @@ public class DatabaseManager {
     }
 
     public void createQuestion(){
-        TestQuestion question = new TestQuestion();
+        Question question = new Question();
     }
 
 }

@@ -1,47 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
     <meta charset="UTF-8">
     <title>Student menu</title>
-
-    <style>
-        h2 {
-           font: 50px Roboto, sans-serif;
-           color: #C620FC;
-           text-align: center;
-           margin-bottom: 2px;
-           margin-top: 0px;
-        }
-
-        .btn-group button {
-           font: 30px Roboto, sans-serif;
-           line-height: 59px;
-           margin: 10px auto;
-           align-items: center;
-           text-align: center;
-           width: 350px;
-           height: 75px;
-           background-color: black;
-           color: white;
-           border: none;
-           border-radius: 10px;
-           display: block;
-           cursor: pointer;
-        }
-
-        .btn-group button:focus {
-          background-color: #C620FC;
-        }
-
-    </style>
-
+    <link href="../static/css/style.css" th:href="@{/css/style.css}" rel="stylesheet"/>
 </head>
-
 <body>
-
-    <div class="btn-group">
-        <h2>Choose a test</h2>
+    <h2 class="text-inner-shadow">Choose a test</h2>
+    <div class="btn-big">
         <button>Knowledge Check 1</button>
         <button>Knowledge Check 2</button>
         <button>Knowledge Check 3</button>
@@ -53,6 +19,5 @@
         <button>Knowledge Check 9</button>
         <button>Knowledge Check 10</button>
     </div>
-
 </body>
 </html>
