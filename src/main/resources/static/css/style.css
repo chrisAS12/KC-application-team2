@@ -1,4 +1,4 @@
-/* Buttons */
+/* BUTTONS */
 .btn-big button, input[type=button] {
     font: 30px Roboto, sans-serif;
     line-height: 59px;
@@ -36,7 +36,7 @@
     background-color: #C620FC;
 }
 
-/* Text formatting */
+/* TEXT */
 .text-inner-shadow {
     color: transparent;
     background: black;
@@ -45,10 +45,11 @@
     text-align: center;
     font: 50px Roboto, sans-serif;
     font-weight: bold;
-    margin-top: 0px;
+    margin-top: 0;
     margin-bottom: 2px;
 }
 
+/* PAGES */
 /* Admin and student login */
 .input-box {
     width: 250px;
@@ -59,14 +60,10 @@
 
 .alert {
     width: 300px;
-    margin-right: auto;
-    margin-left: auto;
     position: relative;
     padding: 1rem 1rem;
-    margin-bottom: 1rem;
-    border: 1px solid transparent;
     border-radius:.25rem;
-    margin-top: 10px;
+    margin: 10px auto 1rem;
     background-color: #F3CFFF;
-    border-color: #C620FC;
+    border: 1px solid #C620FC;
 }
