@@ -51,6 +51,12 @@
 
 /* PAGES */
 /* Admin and student login */
+.login-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+}
 .input-box {
     width: 250px;
     margin-right: auto;
