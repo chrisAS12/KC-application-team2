@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -16,8 +17,9 @@ public class KnowledgeCheck {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "kc_id")
-    private Integer id;
+    private int id;
 
+    @NotEmpty
     @Column(name = "kc_name")
     private String kcName;
 

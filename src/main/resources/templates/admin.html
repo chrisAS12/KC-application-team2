@@ -18,7 +18,7 @@
             <h6 style="text-align: center; font-size: 25px; margin-top: 10px;">Please login</h6>
 <!--            method should be get, not to see password and e-mail in query string,
 but with post we get blank list of results-->
-            <form name="userData" id="userData" method="post" action="/admin">
+            <form name="userData" id="userData" method="post" th:action="@{/admin}">
                 <div class="mb-3">
                     <label for="email" class="form-label" style="font-size: 20px">Email address</label>
                     <input type="email" class="form-control" id="email" name="email">
