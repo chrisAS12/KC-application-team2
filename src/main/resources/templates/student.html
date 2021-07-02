@@ -15,7 +15,7 @@
     <div class="col marginTop whiteBox">
       <h1 class="text-inner-shadow">Welcome to student page</h1>
       <h6 style="text-align: center">Please login</h6>
-      <form name="userData" id="userData" method="post" action="/student">
+      <form name="userData" id="userData" method="post" th:action="@{/student}">
         <div class="mb-3">
           <label for="email" class="form-label">Email address</label>
           <input type="email" class="form-control" id="email" name="email">
