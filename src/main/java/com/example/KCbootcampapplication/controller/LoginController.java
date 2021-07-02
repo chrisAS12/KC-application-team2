@@ -38,12 +38,15 @@ public class LoginController {
             model.addAttribute("hasError", true);
             return new ModelAndView("/admin");
         }
-        request.getSession().setAttribute(SessionData.User, user);
+        if (user.getRole().equals("adm")) {
+            request.getSession().setAttribute(SessionData.admUser, user);
 
-        model.addAttribute("user", user);
+            model.addAttribute("user", user);
 
-        return new ModelAndView("redirect:/tests"); // TODO: 6/28/2021  Check correct page for redirect
+            return new ModelAndView("redirect:/tests"); // TODO: 6/28/2021  Check correct page for redirect
         }
+        return new ModelAndView("/admin");
+    }
 
     @GetMapping("/student")
     public String getStudentLoginPage(Model model) {
@@ -63,10 +66,13 @@ public class LoginController {
             model.addAttribute("hasError", true);
             return new ModelAndView("/student");
         }
-        request.getSession().setAttribute(SessionData.User, user);
+        if (user.getRole().equals("st")) {
+            request.getSession().setAttribute(SessionData.studentUser, user);
 
-        model.addAttribute("user", user);
+            model.addAttribute("user", user);
 
-        return new ModelAndView("redirect:/tests"); // TODO: 6/28/2021  Check correct page for redirect
+            return new ModelAndView("redirect:/tests"); // TODO: 6/28/2021  Check correct page for redirect
+        }
+        return new ModelAndView("/student");
     }
-    }
+}
