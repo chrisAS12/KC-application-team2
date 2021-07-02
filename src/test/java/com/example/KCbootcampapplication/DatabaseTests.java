@@ -4,12 +4,15 @@ import com.example.KCbootcampapplication.domain.KnowledgeCheck;
 import com.example.KCbootcampapplication.domain.Question;
 import com.example.KCbootcampapplication.domain.User;
 import com.example.KCbootcampapplication.service.DatabaseManager;
-import org.junit.Assert;
-import org.junit.jupiter.api.Test;
 import org.springframework.test.context.ContextConfiguration;
+import java.nio.charset.Charset;
+import java.sql.SQLException;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
+import org.junit.Test;
+import static org.junit.Assert.*;
 
 
 @ContextConfiguration(locations = "classpath:hibernate.cfg.xml")
@@ -22,22 +25,22 @@ public class DatabaseTests {
     Question tq;
 
     @Test
-    void test00_insertUser(){
+    public void test00_insertUser(){
         try {
             u.setEmail("test123@testtest.test");
             u.setPassword("test");
             u.setRole("student");
             u.setLogin("test123");
-            Assert.assertEquals("User info not set correctly","email: test123@testtest.test, role: student", "email: " + u.getEmail() + ", role: " + u.getRole());
+            assertEquals( "User info not set correctly","email: test123@testtest.test, role: student", "email: " + u.getEmail() + ", role: " + u.getRole());
             dm.insertUser(u.getEmail(),u.getPassword(), u.getLogin(), u.getRole());
-            System.out.println("User created" +  u.getId());
+            System.out.println("User created" + u.getLogin());
         }catch (Exception e){
             e.printStackTrace();
         }
     }
 
     @Test
-    void test02_DBMLogin(){
+    public void test02_DBMLogin(){
         try {
             u.setEmail("test123@testtest.test");
             u.setPassword("test");
@@ -59,11 +62,11 @@ public class DatabaseTests {
         u.setPassword("test456");
         u.setRole("student");
         u.setLogin("test456");
-        tq.setQuestion("what is life");
+        //tq.set("what is life");
         tq.setType("test");
         questions.add(tq);
         kc.setKcName("Test");
-        kc.setQuestions(questions);
+        kc.setQuestion(questions);
         kc.setIsShow(true);
         kc.setStartTime(LocalDateTime.now());
         kc.setFinishTime(LocalDateTime.now());
@@ -78,34 +81,57 @@ public class DatabaseTests {
     }
 
     @Test
-    void test04_DBMSaveQuestions(){
+    public void test04_DBMSaveQuestions(){
         questions = new ArrayList<>();
         tq = new Question();
-        questions.add(tq);
-        dm.saveQuestions(questions);
+        //tq.q("what");
+        Random a = new Random();
+        byte[] letters = new byte[7];
+        int b = a.nextInt(30);
+        try {
+            while (b + 1 > 1) {
+                String testStr = new String(letters, Charset.forName("UTF-8"));
+                //tq.setQuestion(testStr);
+
+                tq.setAnswer("a" + b);
+
+                questions.add(tq);
+                System.out.println(tq.getAnswer() + " " + tq.getClass());
+                b--;
+            }
+            dm.saveQuestions(questions);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
     }
 
     @Test
-    void test05_DBMUpdate(){
+    public void test05_DBMUpdate(){
         //dm.update();
     }
 
     @Test
-    void test06_DBMUpdateQuestions(){
+    public void test06_DBMUpdateQuestions(){
         //dm.updateQuestion();
     }
 
-    @Test
-    void test07DBMDelete(){
+    //@Test
+    public void test07DBMDelete(){
         kc = new KnowledgeCheck();
         questions = new ArrayList<>();
         kc.setKcName("Test");
         questions.add(tq);
-        kc.setQuestions(questions);
+        kc.setQuestion(questions);
         kc.setIsShow(true);
         kc.setStartTime(LocalDateTime.now());
         kc.setFinishTime(LocalDateTime.now());
-        dm.delete(u);
-        dm.delete(kc);
+        try {
+            dm.delete(u);
+            dm.delete(kc);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
     }
 }

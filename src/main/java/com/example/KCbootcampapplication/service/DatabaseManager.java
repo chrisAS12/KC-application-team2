@@ -174,7 +174,7 @@ public class DatabaseManager {
         var session = factory.openSession();
         try {
             // FIXME
-            String hql = "FROM KnowledgeCheck K WHERE  K.questions = :knowledgeCheckId";
+            String hql = "FROM KnowledgeCheck K WHERE  K.question = :knowledgeCheckId";
             Query query1 = session.createQuery(hql);
 
             query1.setParameter("knowledgeCheckId", knowledgeCheckId);
