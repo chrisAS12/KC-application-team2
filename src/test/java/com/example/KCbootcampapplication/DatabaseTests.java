@@ -31,8 +31,9 @@ public class DatabaseTests {
             u.setPassword("test");
             u.setRole("student");
             u.setLogin("test123");
+            u.setName("John");
             assertEquals( "User info not set correctly","email: test123@testtest.test, role: student", "email: " + u.getEmail() + ", role: " + u.getRole());
-            dm.insertUser(u.getEmail(),u.getPassword(), u.getLogin(), u.getRole());
+            dm.insertUser(u.getEmail(),u.getPassword(), u.getLogin(), u.getRole(), u.getName());
             System.out.println("User created" + u.getLogin());
         }catch (Exception e){
             e.printStackTrace();
@@ -54,26 +55,29 @@ public class DatabaseTests {
     }
 
     @Test
-    void test03_DBMSave(){
+    public void test03_DBMSave(){
         tq = new Question();
         kc = new KnowledgeCheck();
-        questions = new ArrayList<>();
+        u = new User();
+
         u.setEmail("test456@testtest.test");
         u.setPassword("test456");
         u.setRole("student");
         u.setLogin("test456");
-        //tq.set("what is life");
+        u.setName("John");
+        tq.setTitle("what is life");
         tq.setType("test");
-        questions.add(tq);
+        tq.setAnswer("a");
         kc.setKcName("Test");
-        kc.setQuestion(questions);
         kc.setIsShow(true);
         kc.setStartTime(LocalDateTime.now());
         kc.setFinishTime(LocalDateTime.now());
+
         try {
-            dm.save(questions);
             dm.save(u);
+            kc.setUser(u);
             dm.save(kc);
+            tq.setKnowledgeCheck(kc);
             dm.save(tq);
         }catch (Exception e){
             e.printStackTrace();
@@ -84,17 +88,28 @@ public class DatabaseTests {
     public void test04_DBMSaveQuestions(){
         questions = new ArrayList<>();
         tq = new Question();
-        //tq.q("what");
+        u = new User();
         Random a = new Random();
         byte[] letters = new byte[7];
         int b = a.nextInt(30);
         try {
+            kc = new KnowledgeCheck();
+            kc.setKcName("test Save Questions");
+            kc.setIsShow(true);
+            kc.setStartTime(LocalDateTime.now());
+            kc.setFinishTime(LocalDateTime.now());
+            u.setName("Save questions tester");
+            u.setEmail("svq");
+            u.setPassword("aaa");
+            dm.save(u);
+            dm.save(kc);
+            tq.setType("dbmsave");
             while (b + 1 > 1) {
                 String testStr = new String(letters, Charset.forName("UTF-8"));
-                //tq.setQuestion(testStr);
-
+                tq.setTitle(testStr);
                 tq.setAnswer("a" + b);
-
+                tq.setKnowledgeCheck(kc);
+                dm.save(tq);
                 questions.add(tq);
                 System.out.println(tq.getAnswer() + " " + tq.getClass());
                 b--;

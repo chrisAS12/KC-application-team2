@@ -20,7 +20,6 @@ public class DatabaseManager {
             factory = new Configuration().configure()
                     .addAnnotatedClass(UserAnswer.class)
                     .addAnnotatedClass(Question.class)
-                    .addAnnotatedClass(KnowledgeCheck.class)
                     .addAnnotatedClass(User.class)
                     .addAnnotatedClass(KnowledgeCheck.class)
                     .buildSessionFactory();
@@ -51,26 +50,7 @@ public class DatabaseManager {
         return null;
     }
 
-    public boolean insertUser(String email, String pw, String login, String role){
-        var session = factory.openSession();
-        try {
-            User u = new User();
-            u.setLogin(login);
-            u.setEmail(email);
-            u.setPassword(pw);
-            u.setRole(role);
-            session.save(u);
-            return true;
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-        finally {
-            session.close();
-        }
-        return false;
-    }
-
-    public boolean insertUser(String email, String pw, String login, String role,String name){
+    public boolean insertUser(String email, String pw, String login, String role, String name){
         var session = factory.openSession();
         try {
             User u = new User();
