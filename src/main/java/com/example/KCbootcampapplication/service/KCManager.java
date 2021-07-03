@@ -29,7 +29,7 @@ public class KCManager {
     }
 
     //same for all 10 Knowledge Checks, need to correct only number of Q.knowledgeCheck.id
-    private List <Question> getKnowledgeCheck1(){
+    public List <Question> getKnowledgeCheck1(){
         var session = factory1.openSession();
         var query = "FROM Question Q where Q.knowledgeCheck.id = 1";
 
@@ -43,7 +43,7 @@ public class KCManager {
         return new ArrayList<>();
     }
 
-    private List <Question> getKnowledgeCheck2(){
+    public List <Question> getKnowledgeCheck2(){
         var session = factory1.openSession();
         var query = "FROM Question Q where Q.knowledgeCheck.id = 2";
 
@@ -57,9 +57,29 @@ public class KCManager {
         return new ArrayList<>();
     }
 
-    // TODO: 7/1/2021 need to call all 10 getKC methods here. Then can call this method in controller
-    public void showKnowledgeChecks(){
-    getKnowledgeCheck1();
-    getKnowledgeCheck2();
+    public List<KnowledgeCheck> getAllKnowledgeChecks() {
+        var session = factory1.openSession();
+        try {
+            return session.createQuery("FROM KnowledgeCheck").list();
+        } catch (HibernateException exception) {
+            System.err.println(exception);
+        } finally {
+            session.close();
+        }
+        return new ArrayList<>();
+    }
+
+    public KnowledgeCheck getKcById (int id){
+
+        var session = factory1.openSession();
+
+        try {
+            return session.get(KnowledgeCheck.class, id);
+        } catch (HibernateException exception) {
+            System.err.println(exception);
+        } finally {
+            session.close();
+        }
+        return null;
     }
 }

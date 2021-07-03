@@ -22,5 +22,4 @@ public class UserAnswer {
 
     @Column(name = "user_answer_iscorrect")
     private boolean isCorrect;
-
 }
