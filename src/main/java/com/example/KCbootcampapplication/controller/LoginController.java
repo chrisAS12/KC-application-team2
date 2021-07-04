@@ -1,13 +1,13 @@
 package com.example.KCbootcampapplication.controller;
 
 import com.example.KCbootcampapplication.dto.LoginDto;
+import com.example.KCbootcampapplication.service.DatabaseManager;
+import com.example.KCbootcampapplication.service.SessionData;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
-import com.example.KCbootcampapplication.service.DatabaseManager;
-import com.example.KCbootcampapplication.service.SessionData;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -15,7 +15,6 @@ import javax.servlet.http.HttpServletRequest;
 public class LoginController {
 
     private DatabaseManager dm;
-
     public LoginController() {
         dm = new DatabaseManager();
     }

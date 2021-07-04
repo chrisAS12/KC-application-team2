@@ -1,18 +1,22 @@
 package com.example.KCbootcampapplication.service;
+
 import com.example.KCbootcampapplication.domain.KnowledgeCheck;
-import com.example.KCbootcampapplication.domain.UserAnswer;
 import com.example.KCbootcampapplication.domain.Question;
 import com.example.KCbootcampapplication.domain.User;
-
+import com.example.KCbootcampapplication.domain.UserAnswer;
 import org.hibernate.HibernateException;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.query.Query;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
+
 import java.util.List;
 
 public class DatabaseManager {
 
+    private PasswordEncoder passwordEncoder = new BCryptPasswordEncoder(6);;
     private static SessionFactory factory;
 
     public DatabaseManager() {
@@ -32,15 +36,15 @@ public class DatabaseManager {
     public User login(String email, String password) {
         var session = factory.openSession();
         try {
-            String hql = "FROM User U WHERE U.email = :email and U.password = SHA1(:pwd)";
+            String hql = "FROM User U WHERE U.email = :email";
             Query query1 = session.createQuery(hql);
 
             query1.setParameter("email", email);
-            query1.setParameter("pwd", password);
             var results = query1.list();
-
-            if (results.size() > 0) {
-                return (User) results.get(0);
+            for(int i = 0; i < results.size(); i++){
+                if(passwordEncoder.matches(password, ((User) results.get(i)).getPassword())){
+                    return (User) results.get(i);
+                }
             }
         } catch (HibernateException ex) {
             System.err.println(ex);
@@ -69,6 +73,7 @@ public class DatabaseManager {
         }
         return false;
     }
+
 
     public void save(Object item) {
         var session = factory.openSession();

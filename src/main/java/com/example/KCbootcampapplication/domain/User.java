@@ -36,15 +36,4 @@ public class User {
     @OneToMany(mappedBy = "user")  // TODO: 7/1/2021 need to check this join
     List<KnowledgeCheck> knowledgeChecks;
 
-    // Getters and setters
-
-    public String getRole() {
-        return role;
-    }
-
-    public void setRole(String role) {
-        this.role = role;
-    }
-
-
 }
