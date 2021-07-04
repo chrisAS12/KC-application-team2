@@ -40,7 +40,7 @@ public class LoginController {
             request.getSession().setAttribute(SessionData.admUser, user);
             model.addAttribute("user", user);
             System.err.println(user);
-            return new ModelAndView("redirect:/admin/dashboard"); // TODO: 6/28/2021  Check correct page for redirect
+            return new ModelAndView("redirect:/admin/dashboard");
         }
         return new ModelAndView("/admin");
     }
@@ -65,10 +65,8 @@ public class LoginController {
         }
         if (user.getRole().equals("st")) {
             request.getSession().setAttribute(SessionData.studentUser, user);
-
             model.addAttribute("user", user);
-
-            return new ModelAndView("redirect:/tests/"); // TODO: 6/28/2021  Check correct page for redirect
+            return new ModelAndView("redirect:/tests/");
         }
         return new ModelAndView("/student");
     }

@@ -16,7 +16,8 @@ import java.util.List;
 
 public class DatabaseManager {
 
-    private PasswordEncoder passwordEncoder = new BCryptPasswordEncoder(6);;
+    private PasswordEncoder passwordEncoder = new BCryptPasswordEncoder(6);
+    ;
     private static SessionFactory factory;
 
     public DatabaseManager() {
@@ -41,8 +42,8 @@ public class DatabaseManager {
 
             query1.setParameter("email", email);
             var results = query1.list();
-            for(int i = 0; i < results.size(); i++){
-                if(passwordEncoder.matches(password, ((User) results.get(i)).getPassword())){
+            for (int i = 0; i < results.size(); i++) {
+                if (passwordEncoder.matches(password, ((User) results.get(i)).getPassword())) {
                     return (User) results.get(i);
                 }
             }
@@ -54,7 +55,7 @@ public class DatabaseManager {
         return null;
     }
 
-    public boolean insertUser(String email, String pw, String login, String role, String name){
+    public boolean insertUser(String email, String pw, String login, String role, String name) {
         var session = factory.openSession();
         try {
             User u = new User();
@@ -65,10 +66,9 @@ public class DatabaseManager {
             u.setName(name);
             session.save(u);
             return true;
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
-        }
-        finally {
+        } finally {
             session.close();
         }
         return false;
@@ -83,7 +83,7 @@ public class DatabaseManager {
             session.save(item);
             tx.commit();
         } catch (HibernateException ex) {
-            if(tx != null) {
+            if (tx != null) {
                 tx.rollback();
             }
             System.err.println(ex);
@@ -92,18 +92,18 @@ public class DatabaseManager {
         }
     }
 
-    public void saveQuestions(List <Question> items){
+    public void saveQuestions(List<Question> items) {
         var session = factory.openSession();
         Transaction tx = null;
         try {
             tx = session.beginTransaction();
-            for ( var item: items
-                 ) {
-             session.save(item);
+            for (var item : items
+            ) {
+                session.save(item);
             }
             tx.commit();
         } catch (HibernateException exception) {
-            if(tx !=null){
+            if (tx != null) {
                 tx.rollback();
             }
             System.err.println(exception);
@@ -120,7 +120,7 @@ public class DatabaseManager {
             session.update(item);
             tx.commit();
         } catch (HibernateException ex) {
-            if(tx != null) {
+            if (tx != null) {
                 tx.rollback();
             }
             System.err.println(ex);
@@ -130,7 +130,7 @@ public class DatabaseManager {
     }
 
     public void updateQuestion(Question question) {
-        if(question.getId() == 0) {
+        if (question.getId() == 0) {
             return;
         }
         update(question);
@@ -145,7 +145,7 @@ public class DatabaseManager {
             session.delete(obj);
             tx.commit();
         } catch (HibernateException exception) {
-            if(tx != null) {
+            if (tx != null) {
                 tx.rollback();
             }
             System.err.println(exception);
@@ -154,15 +154,15 @@ public class DatabaseManager {
         }
     }
 
-    public Question getQuestionsFromTestId(int knowledgeCheckId){
+    public Question getQuestionsFromTestId(int knowledgeCheckId) {
         var session = factory.openSession();
         try {
             // FIXME
             String hql = "FROM KnowledgeCheck K WHERE  K.question = :knowledgeCheckId";
-            Query query1 = session.createQuery(hql);
+            Query query = session.createQuery(hql);
 
-            query1.setParameter("knowledgeCheckId", knowledgeCheckId);
-            var results = query1.list();
+            query.setParameter("knowledgeCheckId", knowledgeCheckId);
+            var results = query.list();
 
             if (results.size() > 0) {
                 return (Question) results;
@@ -175,11 +175,13 @@ public class DatabaseManager {
         return null;
     }
 
-    public List<KnowledgeCheck> getKnowledgeChecksByNames(){
+    public List<KnowledgeCheck> getKnowledgeChecksByNames(int userId) {
         var session = factory.openSession();
         try {
-            // FIXME
-           //return session.createQuery("SELECT a FROM KnowledgeCheck a", KnowledgeCheck.class).getResultList();
+            String hql = "FROM KnowledgeCheck K WHERE  K.user = :userId";
+            Query query = session.createQuery(hql);
+            query.setParameter("userId", userId);
+            return query.list();
         } catch (HibernateException ex) {
             System.err.println(ex);
         } finally {
@@ -188,7 +190,7 @@ public class DatabaseManager {
         return null;
     }
 
-    public void createQuestion(){
+    public void createQuestion() {
         Question question = new Question();
     }
 
