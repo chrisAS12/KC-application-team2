@@ -1,17 +1,18 @@
 package com.example.KCbootcampapplication.service;
 
-import com.example.KCbootcampapplication.domain.KnowledgeCheck;
-import com.example.KCbootcampapplication.domain.Question;
-import com.example.KCbootcampapplication.domain.User;
-import com.example.KCbootcampapplication.domain.UserAnswer;
+import com.example.KCbootcampapplication.domain.*;
 import org.hibernate.HibernateException;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.query.Query;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class DatabaseManager {
@@ -192,6 +193,17 @@ public class DatabaseManager {
 
     public void createQuestion() {
         Question question = new Question();
+    }
+
+    public void createNewUser(User user){
+        List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
+        if(user.getRole().equals("user")) {
+            authorities.add(new SimpleGrantedAuthority("user"));
+        }
+        if(user.getRole().equals("admin")) {
+            authorities.add(new SimpleGrantedAuthority("user"));
+        }
+
     }
 
 }

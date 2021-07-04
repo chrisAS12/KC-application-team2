@@ -33,15 +33,15 @@ public class AdminController {
 
     // @PreAuthorize("hasRole('admin')") FIXME - fix authorization
     @GetMapping("/dashboard")
-    public String getAdminLoginPage(Model model, HttpSession session) {
-        var user = (User) session.getAttribute(SessionData.admUser);
+    public String getAdminLoginPage(Model model, HttpSession request) {
+        var user = (User) request.getAttribute(SessionData.admUser);
         model.addAttribute("userName", user.getName());
         System.err.println(user.getName());
         return "admin_menu";
     }
 
     @GetMapping("/new-user")
-    public String addCreateuserView(Model model) {
+    public String addCreateUserView(Model model) {
         model.addAttribute("user", new User());
         return ("create_user");
     }
@@ -53,25 +53,24 @@ public class AdminController {
             return "redirect:/admin/new-user";
         }
         user.setPassword(passwordEncoder.encode(user.getPassword()));
-        System.err.println(user.getPassword());
-        dm.save(user);
+        dm.createNewUser(user);
         return "redirect:/admin/dashboard"; // after creating a new user redirect to dashboard.
     }
 
     @GetMapping("/results")
-    public String getResults(Model model, HttpSession session) {
+    public String getResults(Model model, HttpSession request) {
         return "results"; // TODO Create a results page.
     }
 
     @GetMapping("/createKC")
-    public String createKnowledgeCheck(Model model, HttpSession session) {
+    public String createKnowledgeCheck(Model model, HttpSession request) {
         model.addAttribute("quiz", new KnowledgeCheck());
         model.addAttribute("questions", new ArrayList<Question>());
         return "create_knowledge_check"; // TODO: 7/3/2021
     }
 
     @GetMapping("/create-multiple-choice-question")
-    public String getMultipleChoiceQuestionCreation(Model model, HttpSession session) {
+    public String getMultipleChoiceQuestionCreation(Model model, HttpSession request) {
         return "create_multiple_question"; // TODO
     }
 
