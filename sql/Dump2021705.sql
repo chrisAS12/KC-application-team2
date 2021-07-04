@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 8.0.22, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.25, for Win64 (x86_64)
 --
 -- Host: localhost    Database: bootcamp
 -- ------------------------------------------------------
--- Server version	8.0.22
+-- Server version	8.0.25
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -30,7 +30,7 @@ CREATE TABLE `knowledge_check` (
   `kc_finish_time` datetime DEFAULT NULL,
   `user_id` int DEFAULT NULL,
   PRIMARY KEY (`kc_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -39,8 +39,48 @@ CREATE TABLE `knowledge_check` (
 
 LOCK TABLES `knowledge_check` WRITE;
 /*!40000 ALTER TABLE `knowledge_check` DISABLE KEYS */;
-INSERT INTO `knowledge_check` VALUES (1,'Knowledge Check 1',0,NULL,NULL,NULL);
+INSERT INTO `knowledge_check` VALUES (1,'Knowledge Check 1',0,NULL,NULL,NULL),(2,'Test',1,'2021-07-03 17:05:35','2021-07-03 17:05:35',4);
 /*!40000 ALTER TABLE `knowledge_check` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `after_KC_delete` AFTER DELETE ON `knowledge_check` FOR EACH ROW delete from questions
+where question_kc_id = old.kc_id */;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+
+--
+-- Table structure for table `offered_answers`
+--
+
+DROP TABLE IF EXISTS `offered_answers`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `offered_answers` (
+  `answer_id` int NOT NULL AUTO_INCREMENT,
+  `answer_text` varchar(999) NOT NULL,
+  `question_id` int NOT NULL,
+  PRIMARY KEY (`answer_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `offered_answers`
+--
+
+LOCK TABLES `offered_answers` WRITE;
+/*!40000 ALTER TABLE `offered_answers` DISABLE KEYS */;
+/*!40000 ALTER TABLE `offered_answers` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -63,7 +103,7 @@ CREATE TABLE `questions` (
   `opt4` varchar(300) DEFAULT NULL,
   `marks` varchar(300) DEFAULT NULL,
   PRIMARY KEY (`question_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=119 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -91,7 +131,7 @@ CREATE TABLE `user` (
   `user_role` varchar(45) NOT NULL,
   `user_name` varchar(200) NOT NULL,
   PRIMARY KEY (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -148,4 +188,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-07-04 18:06:49
+-- Dump completed on 2021-07-04 23:01:15
