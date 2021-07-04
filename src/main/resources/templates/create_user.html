@@ -30,8 +30,16 @@
                        placeholder="User password">
             </li>
             <li>
-                <input required class="" th:field="*{role}" type="text" name="user_role" id="user_role"
-                       placeholder="User role: ['st' , 'adm']">
+                <div class="">
+                    <input class="" th:field="*{role}" type="radio" name="user_role" id="user_role_user"
+                           value="student">
+                    <label class="" for="user_role_user">User</label>
+                </div>
+                <div class="">
+                    <input class="" th:field="*{role}" type="radio" name="user_role" id="user_role_admin"
+                           value="admin">
+                    <label class="" for="user_role_admin">Admin</label>
+                </div>
             </li>
         </ul>
         <br>

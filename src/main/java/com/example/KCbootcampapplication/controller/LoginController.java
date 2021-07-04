@@ -19,56 +19,35 @@ public class LoginController {
         dm = new DatabaseManager();
     }
 
-    @GetMapping("/admin")
+    @GetMapping("/login")
     public String getAdminLoginPage(Model model) {
         model.addAttribute("error", "");
         model.addAttribute("hasError", false);
-        return "admin";
+        return "login";
     }
 
     //HttpSession session
-    @PostMapping("/admin")
+    @PostMapping("/login")
     public ModelAndView adminLogin(LoginDto userData, Model model, HttpServletRequest request) {
         // System.err.println(userData.getEmail() + "  " + userData.getPwd());
         var user = dm.login(userData.getEmail(), userData.getPwd());
         if (user == null) {
             model.addAttribute("error", "Unable to login");
             model.addAttribute("hasError", true);
-            return new ModelAndView("/admin");
+            return new ModelAndView("login");
         }
-        if (user.getRole().equals("adm")) {
-            request.getSession().setAttribute(SessionData.admUser, user);
+        if (user.getRole().equals("admin")) {
+            request.getSession().setAttribute(SessionData.admin, user);
             model.addAttribute("user", user);
             System.err.println(user);
             return new ModelAndView("redirect:/admin/dashboard");
         }
-        return new ModelAndView("/admin");
-    }
-
-    @GetMapping("/student")
-    public String getStudentLoginPage(Model model) {
-        model.addAttribute("error", "");
-        model.addAttribute("hasError", false);
-        return "student";
-    }
-
-    //HttpSession session
-    @PostMapping("/student")
-    public ModelAndView studentLogin(LoginDto userData, Model model, HttpServletRequest request) {
-
-        var user = dm.login(userData.getEmail(), userData.getPwd());
-
-        if (user == null) {
-            model.addAttribute("error", "Unable to login");
-            model.addAttribute("hasError", true);
-            return new ModelAndView("/student");
-        }
-        if (user.getRole().equals("st")) {
-            request.getSession().setAttribute(SessionData.studentUser, user);
+        if (user.getRole().equals("student")) {
+            request.getSession().setAttribute(SessionData.student, user);
             model.addAttribute("user", user);
-            return new ModelAndView("redirect:/tests/");
+            return new ModelAndView("redirect:/student/tests/");
         }
-        return new ModelAndView("/student");
+        return new ModelAndView("login");
     }
 
     @GetMapping({"/", "/index", ""})

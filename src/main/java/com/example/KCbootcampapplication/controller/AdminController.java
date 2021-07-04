@@ -34,7 +34,7 @@ public class AdminController {
     // @PreAuthorize("hasRole('admin')") FIXME - fix authorization
     @GetMapping("/dashboard")
     public String getAdminLoginPage(Model model, HttpSession session) {
-        var user = (User) session.getAttribute(SessionData.admUser);
+        var user = (User) session.getAttribute(SessionData.admin);
         model.addAttribute("userName", user.getName());
         System.err.println(user.getName());
         return "admin_menu";

@@ -175,12 +175,12 @@ public class DatabaseManager {
         return null;
     }
 
-    public List<KnowledgeCheck> getKnowledgeChecksByNames(int userId) {
+    public List<KnowledgeCheck> getKnowledgeChecksByNames(User user) {
         var session = factory.openSession();
         try {
-            String hql = "FROM KnowledgeCheck K WHERE  K.user = :userId";
+            String hql = "FROM KnowledgeCheck K WHERE  K.user = :user";
             Query query = session.createQuery(hql);
-            query.setParameter("userId", userId);
+            query.setParameter("user", user);
             return query.list();
         } catch (HibernateException ex) {
             System.err.println(ex);
