@@ -3,6 +3,7 @@ package com.example.KCbootcampapplication.domain;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import java.time.LocalDateTime;
@@ -12,7 +13,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name="knowledge_check")
+@Table(name = "knowledge_check")
 public class KnowledgeCheck {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -33,8 +34,8 @@ public class KnowledgeCheck {
     private LocalDateTime finishTime;
 
     //Knowledge Check Teacher relationship
-    @ManyToOne(fetch=FetchType.LAZY) // TODO: 7/1/2021 need to check join 
-    @JoinColumn(name="user_id")
+    @ManyToOne(fetch = FetchType.LAZY) // TODO: 7/1/2021 need to check join
+    @JoinColumn(name = "user_id")
     private User user;
 
     // Quiz Question RelationShip

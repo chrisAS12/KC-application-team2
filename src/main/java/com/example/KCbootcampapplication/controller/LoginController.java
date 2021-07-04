@@ -30,7 +30,7 @@ public class LoginController {
     //HttpSession session
     @PostMapping("/admin")
     public ModelAndView adminLogin(LoginDto userData, Model model, HttpServletRequest request) {
-       // System.err.println(userData.getEmail() + "  " + userData.getPwd());
+        // System.err.println(userData.getEmail() + "  " + userData.getPwd());
         var user = dm.login(userData.getEmail(), userData.getPwd());
         if (user == null) {
             model.addAttribute("error", "Unable to login");
@@ -40,7 +40,8 @@ public class LoginController {
         if (user.getRole().equals("adm")) {
             request.getSession().setAttribute(SessionData.admUser, user);
             model.addAttribute("user", user);
-            return new ModelAndView("redirect:/tests/"); // TODO: 6/28/2021  Check correct page for redirect
+            System.err.println(user);
+            return new ModelAndView("redirect:/admin/dashboard"); // TODO: 6/28/2021  Check correct page for redirect
         }
         return new ModelAndView("/admin");
     }
@@ -71,5 +72,10 @@ public class LoginController {
             return new ModelAndView("redirect:/tests/"); // TODO: 6/28/2021  Check correct page for redirect
         }
         return new ModelAndView("/student");
+    }
+
+    @GetMapping({"/", "/index", ""})
+    public String greeting() {
+        return "welcome";
     }
 }

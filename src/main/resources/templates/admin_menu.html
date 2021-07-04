@@ -9,9 +9,11 @@
     </head>
     <body>
         <h2 class="text-inner-shadow">Menu</h2>
+        <h1 th:text="'Greetings, ' + ${userName} + '!'"></h1>
         <div class="btn-big">
-            <button>Create new test</button>
-            <button>Check results</button>
+            <input type="button" onclick="location.href='/admin/createKC'" value="Create new test">
+            <input type="button" onclick="location.href='/admin/results'" value="Check results">
+            <input type="button" onclick="location.href='/admin/create-user'" value="Create new user">
         </div>
     </body>
 </html>

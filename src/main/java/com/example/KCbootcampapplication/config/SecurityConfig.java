@@ -17,8 +17,4 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         security.httpBasic().disable();
     }
 }
-/*
-public class SecurityConfig{
 
-}
-*/
