@@ -22,4 +22,7 @@ public class UserAnswer {
 
     @Column(name = "user_answer_iscorrect")
     private boolean isCorrect;
+
+    @Column(name = "user_score") // TODO: 7/4/2021 need to store user calculated results 
+    private Double score;
 }

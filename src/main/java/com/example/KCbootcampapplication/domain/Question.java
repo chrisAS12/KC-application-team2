@@ -43,7 +43,7 @@ public class Question {
     private String opt4;
 
     @NotEmpty
-    @Column(name= "marks" , nullable = false)
+    @Column(name= "marks" , nullable = true)
     private int question_marks;
 
     @ManyToOne(cascade = CascadeType.DETACH, fetch = FetchType.EAGER) // TODO: 7/1/2021 need to check this join

@@ -36,4 +36,6 @@ public class User {
     @OneToMany(mappedBy = "user")  // TODO: 7/1/2021 need to check this join
     List<KnowledgeCheck> knowledgeChecks;
 
+    @OneToMany(mappedBy = "user")  // TODO: 7/4/2021 need to check this join
+    List<UserAnswer> userAnswers;
 }
