@@ -44,7 +44,7 @@ public class StudentController {
         System.err.println(user.getName());
         List<Question> questions = dbManager.getQuestionsForKc(id);
        // System.err.println("im here boy. ");
-       // model.addAttribute("questions", questions);
+         model.addAttribute("questions", questions);
         return "kc_questions";
     }
 }

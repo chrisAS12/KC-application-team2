@@ -178,7 +178,9 @@ public class DatabaseManager {
             var results = query.list();
             if (results.size() > 0) {
                 for (Object o : results){
+                    System.err.println(results.size() + "======================================");
                     Question q = (Question) o;
+                    System.err.println(q.getTitle());
                     res.add(q);
                 }
                 return res;

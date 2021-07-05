@@ -45,12 +45,12 @@ public class DatabaseTests {
         u.setName("John");
     }
 
-//    @After
-//    public void cleanUp(){
-//        dm.delete(u);
-//        dm.delete(tq);
-//        dm.delete(kc);
-//    }
+    @After
+    public void cleanUp(){
+        dm.delete(u);
+        dm.delete(tq);
+        dm.delete(kc);
+    }
 
 
     @Test
@@ -80,6 +80,7 @@ public class DatabaseTests {
         questions = new ArrayList<>();
         Random a = new Random();
         byte[] letters = new byte[7];
+        new Random().nextBytes(letters);
         int b = a.nextInt(30);
         kc.setName("test Save Questions");
         u.setName("Save questions tester");
@@ -96,6 +97,27 @@ public class DatabaseTests {
             b--;
         }
         dm.saveQuestions(questions);
-        assertEquals("Not the right test",questions.get(0), dm.getQuestionsForKc(kc.getId()).get(0));
+        assertEquals("Not the right test", questions.get(0), dm.getQuestionsForKc(kc.getId()).get(0));
     }
+
+//    Question ab = new Question();
+//        ab.setTitle("write your name");
+//        ab.setType("free");
+//        ab.setAnswer("aaaaa");
+//        ab.setKnowledgeCheck(kc);
+//        questions.add(ab);
+//    Question db = new Question();
+//        db.setTitle("1. Please write your name and surname with Latin characters only, e.g.");
+//    Question cb = new Question();
+//        cb.setTitle("2. What is valid method signature as an entry point into Java program:");
+//        cb.setOpt1("a) public static main()");
+//        cb.setOpt2("b) public void static main (String [] args)");
+//        cb.setOpt3("c) public static int main (String [] args)");
+//        cb.setOpt4("d) public static void main (String args [])");
+//        cb.setAnswer("d");
+//        cb.setKnowledgeCheck(kc);
+//        cb.setType("aaa");
+//        dm.save(cb);
+//        dm.save(ab);
+//        questions.add(cb);
 }
