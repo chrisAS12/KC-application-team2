@@ -13,21 +13,21 @@
     <h3 class="text-subpage">Create a new user</h3>
     <form th:action="@{/admin/create_user}" th:object="${user}" name="newUser" id="newUser" method="POST"
           enctype="multipart/form-data">
-        <ul class="ul-no-bullets">
+        <ul class="list-unstyled">
             <li>
-                <input required class="" th:field="*{name}" type="text" name="user_name" id="user_name"
+                <input required class="create-user-input" th:field="*{name}" type="text" name="user_name" id="user_name"
                        placeholder="User name">
             </li>
             <li>
-                <input required class="" th:field="*{email}" type="text" name="user_email" id="user_email"
+                <input required class="create-user-input" th:field="*{email}" type="text" name="user_email" id="user_email"
                        placeholder="User email">
             </li>
             <li>
-                <input required class="" th:field="*{login}" type="text" name="user_login" id="user_login"
+                <input required class="create-user-input" th:field="*{login}" type="text" name="user_login" id="user_login"
                        placeholder="User login">
             </li>
             <li>
-                <input required class="" th:field="*{password}" type="text" name="user_password" id="user_password"
+                <input required class="create-user-input" th:field="*{password}" type="text" name="user_password" id="user_password"
                        placeholder="User password">
             </li>
             <li>

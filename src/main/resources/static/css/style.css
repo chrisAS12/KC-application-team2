@@ -1,4 +1,4 @@
-/* BUTTONS */
+/* BUTTONS AND INPUTS */
 .btn-big button, input[type=button] {
     font: 30px Roboto, sans-serif;
     line-height: 59px;
@@ -34,6 +34,14 @@
 
 .btn-small button:hover, button[type=submit]:hover {
     background-color: #C620FC;
+}
+
+input[type=text]:hover{
+    box-shadow: 0 0 5pt 0.5pt #D3D3D3;
+}
+input[type=text]:focus {
+    box-shadow: 0 0 5pt 2pt #D3D3D3;
+    outline-color: #C620FC;
 }
 
 /* TEXT */
@@ -90,6 +98,10 @@ ul {
     text-align: left;
 }
 
-.ul-no-bullets {
-    list-style-type: none;
+/* Create user */
+
+.create-user-input {
+    margin-right: auto;
+    margin-left: auto;
+    margin-bottom: 1rem !important;
 }
