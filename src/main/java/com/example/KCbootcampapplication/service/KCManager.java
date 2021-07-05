@@ -45,7 +45,7 @@ public class KCManager {
 
     public List <Question> getKnowledgeCheck2(){
         var session = factory1.openSession();
-        var query = "FROM Question Q where Q.knowledgeCheck.id = 2";
+        var query = "FROM Question Q where Q.knowledgeCheck.id = 4";
 
         try {
             return session.createQuery(query).list();

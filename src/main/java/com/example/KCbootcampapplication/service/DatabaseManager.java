@@ -12,6 +12,7 @@ import org.hibernate.query.Query;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class DatabaseManager {
@@ -174,4 +175,31 @@ public class DatabaseManager {
         Question question = new Question();
     }
 
+    public KnowledgeCheck getKcById (int id){
+
+        var session = factory.openSession();
+
+        try {
+            return session.get(KnowledgeCheck.class, id);
+        } catch (HibernateException exception) {
+            System.err.println(exception);
+        } finally {
+            session.close();
+        }
+        return null;
+    }
+
+    public List <Question> getQuestionsforKc(int kcId){
+        var session = factory.openSession();
+        var query = "FROM Question Q where Q.knowledgeCheck.id = :kcId";
+
+        try {
+            return session.createQuery(query).list();
+        } catch (HibernateException ex) {
+            System.err.println(ex);
+        } finally {
+            session.close();
+        }
+        return new ArrayList<>();
+    }
 }
