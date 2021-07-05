@@ -1,10 +1,8 @@
-package com.example.KCbootcampapplication.dto;
-
-import com.example.KCbootcampapplication.domain.KnowledgeCheck;
+package com.example.KCbootcampapplication.domain;
 import lombok.Data;
 
 @Data
-public class ResultDto {
+public class Result {
     private String userAnswer;
     private String correctAnswer;
     private KnowledgeCheck kc;

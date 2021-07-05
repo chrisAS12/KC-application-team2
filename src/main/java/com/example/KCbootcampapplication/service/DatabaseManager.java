@@ -191,7 +191,7 @@ public class DatabaseManager {
 
     public List <Question> getQuestionsforKc(int kcId){
         var session = factory.openSession();
-        var query = "FROM Question Q where Q.knowledgeCheck.id = :kcId";
+        var query = "FROM Question Q where Q.knowledgeCheck.id = :kcId ORDER BY Q.id asc";
 
         try {
             return session.createQuery(query).list();
