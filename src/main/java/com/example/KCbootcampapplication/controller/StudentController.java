@@ -37,13 +37,14 @@ public class StudentController {
         return "student_tests";
     }
 
-    @GetMapping ("/tests/{id}")
+    @GetMapping ("/tests/takeTest/{id}")
     public String showQuestions (@PathVariable("id") int id, Model model, HttpSession session){
         var user = (User) session.getAttribute(SessionData.student);
         model.addAttribute("user_id", user.getId());
         System.err.println(user.getName());
-        var questions = dbManager.getQuestionsForKc(id);
-        model.addAttribute("questions", questions);
-        return "kc_questions"; // TODO: 7/5/2021 fix return page
+        List<Question> questions = dbManager.getQuestionsForKc(id);
+       // System.err.println("im here boy. ");
+       // model.addAttribute("questions", questions);
+        return "kc_questions";
     }
 }
