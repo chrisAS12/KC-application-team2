@@ -12,7 +12,7 @@
     <h2 class="text-inner-shadow">Choose a test</h2>
     <div class="btn-big" th:each="knowledgeCheck:${knowledgeChecks}">
         <div>
-            <button th:text="${knowledgeCheck.name}"/>
+            <a th:href="'tests/'+@{${knowledgeCheck.id}}"><button th:text="${knowledgeCheck.name} "/></a>
         </div>
     </div>
 </div>
