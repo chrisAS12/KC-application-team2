@@ -8,15 +8,16 @@
     <link href="../static/css/style.css" th:href="@{/css/style.css}" rel="stylesheet"/>
 </head>
 <body style="background-color: #F1F1F1;">
+<div class="login-container">
 <div class="question-creation">
-    <h3> Create a multiple choice question</h3>
+    <h3 class="text-subpage"> Create a multiple choice question</h3>
     <form th:action="@{/tests/create-multiple-choice}" method="POST" enctype="multipart/form-data">
-        <ul>
+        <ul class="list-unstyled">
             <li>
                 <input class="" type="text" name="kc_id" placeholder="Knowledge check ID.">
             </li>
             <li>
-            <textarea id="question" name="questionBody" class="form-control" rows="3"
+            <textarea id="question" name="questionBody" class="form-control-textarea" rows="3"
                       placeholder="Question itself"></textarea>
             </li>
             <li>
@@ -38,6 +39,7 @@
         <br>
         <button type="submit">Create question</button>
     </form>
+</div>
 </div>
 </body>
 </html>
