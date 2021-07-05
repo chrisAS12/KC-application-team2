@@ -10,7 +10,12 @@
 <div th:if="${not #lists.isEmpty(questions)}">
 
         <div>
-
+            <li th:each="question : ${questions}">
+                <h1 th:text="${question.getTitle()} "></h1>
+                <h3 th:text="${question.getOpt1()} "></h3>
+                <h3 th:text="${question.getOpt2()} "></h3>
+                <h3 th:text="${question.getOpt3()} "></h3>
+                <h3 th:text="${question.getOpt4()} "></h3>
         </div>
     </div>
 </div>
