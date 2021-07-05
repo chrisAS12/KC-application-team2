@@ -42,9 +42,8 @@ public class StudentController {
         var user = (User) session.getAttribute(SessionData.student);
         model.addAttribute("user_id", user.getId());
         System.err.println(user.getName());
-        //var knowledgeCheck = dbManager.getKcById(id);
         var questions = dbManager.getQuestionsForKc(id);
         model.addAttribute("questions", questions);
-        return ""; // TODO: 7/5/2021 fix return page
+        return "kc_questions"; // TODO: 7/5/2021 fix return page
     }
 }
