@@ -30,20 +30,19 @@ public class Question {
     @Column(name= "question_answer", nullable = false)
     private String answer;
 
-    @Column(name= "opt1" , nullable = true)
+    @Column(name= "opt1")
     private String opt1;
 
-    @Column(name= "opt2" , nullable = true)
+    @Column(name= "opt2")
     private String opt2;
 
-    @Column(name= "opt3" , nullable = true)
+    @Column(name= "opt3")
     private String opt3;
 
-    @Column(name= "opt4" , nullable = true)
+    @Column(name= "opt4")
     private String opt4;
 
-    @NotEmpty
-    @Column(name= "marks" , nullable = true)
+    @Column(name= "marks")
     private int question_marks;
 
     @ManyToOne(cascade = CascadeType.DETACH, fetch = FetchType.EAGER) // TODO: 7/1/2021 need to check this join
