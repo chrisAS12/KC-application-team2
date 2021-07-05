@@ -15,7 +15,7 @@
     cursor: pointer;
 }
 
-.btn-big button:hover {
+.btn-big button:hover, input[type=button]:hover {
     background-color: #C620FC;
 }
 
