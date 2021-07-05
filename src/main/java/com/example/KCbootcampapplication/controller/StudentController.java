@@ -71,6 +71,6 @@ public class StudentController {
         if (binding.hasErrors()) {
             return "redirect:/tests/takeTest/" + knowledgeCheck.getId();
         }
-        return "redirect:/student/tests"; // after creating a new user redirect to dashboard.
+        return "redirect:/student/tests/"; // after creating a new user redirect to dashboard.
     }
 }
