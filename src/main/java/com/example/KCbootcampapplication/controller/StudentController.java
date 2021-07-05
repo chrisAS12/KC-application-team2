@@ -35,7 +35,7 @@ public class StudentController {
         model.addAttribute("user_id", user.getId());
         System.err.println(user.getName());
         var knowledgeChecks = dbManager.getKnowledgeChecksByNames(user);
-        System.err.println(knowledgeChecks.get(0).getKcName());
+        model.addAttribute("knowledgeCheck", knowledgeChecks);
         return "student_tests";
     }
 

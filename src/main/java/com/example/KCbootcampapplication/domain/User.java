@@ -33,9 +33,9 @@ public class User {
     @Column(name = "user_name", nullable=false)
     private String name;
 
-    @OneToMany(mappedBy = "user")  // TODO: 7/1/2021 need to check this join
+    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)  // TODO: 7/1/2021 need to check this join
     List<KnowledgeCheck> knowledgeChecks;
 
-    @OneToMany(mappedBy = "user")  // TODO: 7/4/2021 need to check this join
-    List<UserAnswer> userAnswers;
+    //@OneToMany(mappedBy = "user", fetch = FetchType.LAZY)  // TODO: 7/4/2021 need to check this join
+    //List<UserAnswer> userAnswers;
 }
