@@ -43,7 +43,7 @@ public class Question {
     private String opt4;
 
     @Column(name= "marks")
-    private int question_marks;
+    private String question_marks;
 
     @ManyToOne(cascade = CascadeType.DETACH, fetch = FetchType.EAGER) // TODO: 7/1/2021 need to check this join
     @JoinColumn(name="question_kc_id", referencedColumnName = "kc_id", nullable = false)
