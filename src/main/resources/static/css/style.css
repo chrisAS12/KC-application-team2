@@ -45,6 +45,12 @@ input[type=text]:focus {
     outline-color: #C620FC;
 }
 
+.create-user-input {
+    margin-right: auto;
+    margin-left: auto;
+    margin-bottom: 1rem !important;
+}
+
 .form-control-textarea {
     display:block;
     width:100%;padding:.375rem .75rem;
@@ -71,6 +77,13 @@ input[type=text]:focus {
     outline-color: #C620FC;
 }
 
+.input-box {
+    width: 250px;
+    margin-right: auto;
+    margin-left: auto;
+    margin-bottom: 1rem !important;
+}
+
 /* TEXT */
 .text-inner-shadow {
     color: transparent;
@@ -89,6 +102,11 @@ input[type=text]:focus {
     font-size: 30px;
 }
 
+.question-creation,
+.user-creation {
+    text-align: center;
+}
+
 /* ALIGNMENT */
 .container-middle-align {
     position: absolute;
@@ -97,17 +115,7 @@ input[type=text]:focus {
     transform: translateX(-50%) translateY(-50%);
 }
 
-/* PAGES */
-/* Admin and student login */
-
-
-.input-box {
-    width: 250px;
-    margin-right: auto;
-    margin-left: auto;
-    margin-bottom: 1rem !important;
-}
-
+/* MESSAGES */
 .alert {
     width: 300px;
     position: relative;
@@ -118,20 +126,8 @@ input[type=text]:focus {
     border: 1px solid #C620FC;
 }
 
-.question-creation,
-.user-creation {
-    text-align: center;
-}
-
+/* LISTS */
 ul {
     display: inline-block;
     text-align: left;
-}
-
-/* Create user */
-
-.create-user-input {
-    margin-right: auto;
-    margin-left: auto;
-    margin-bottom: 1rem !important;
 }
