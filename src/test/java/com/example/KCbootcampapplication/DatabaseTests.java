@@ -52,7 +52,6 @@ public class DatabaseTests {
         dm.delete(kc);
     }
 
-
     @Test
     public void test00_saveUser(){
             assertEquals( "User info not set correctly","email: test123@testtest.test, role: student", "email: " + u.getEmail() + ", role: " + u.getRole());
@@ -97,7 +96,7 @@ public class DatabaseTests {
             b--;
         }
         dm.saveQuestions(questions);
-        assertEquals("Not the right test", questions.get(0), dm.getQuestionsForKc(kc.getId()).get(0));
+        assertEquals("Not the right test", questions.get(0), dm.getQuestionsForKc(kc.getId()).get(0)); //should rewrite random string to get proper results
     }
 
 //    Question ab = new Question();
