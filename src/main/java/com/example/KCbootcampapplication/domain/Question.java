@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
+import java.util.ArrayList;
 
 @Data
 @AllArgsConstructor
@@ -53,4 +54,5 @@ public class Question {
     public String toString(){
         return this.getTitle();
     }
+
 }

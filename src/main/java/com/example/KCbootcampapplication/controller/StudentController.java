@@ -44,7 +44,13 @@ public class StudentController {
         var user = (User) session.getAttribute(SessionData.student);
         model.addAttribute("user_id", user.getId());
         List<Question> questions = dbManager.getQuestionsForKc(id);
-        QuestionDisplayDto questionForm = new QuestionDisplayDto(questions.size());
+        int multipleChoiceQuestionAmount = 0;
+        for(int i = 0; i < questions.size(); i++){
+            if(questions.get(i).getType() == "mult"){
+                multipleChoiceQuestionAmount += 4;
+            }
+        }
+        QuestionDisplayDto questionForm = new QuestionDisplayDto(questions.size(), multipleChoiceQuestionAmount);
         for(int i = 0; i < questions.size(); i++){
             questionForm.addQuestion(questions.get(i));
         }
@@ -59,6 +65,7 @@ public class StudentController {
     public String saveAnswers(
             @Valid @ModelAttribute("form") QuestionDisplayDto questionDTO,
             @Valid @ModelAttribute("knowledgeCheck") KnowledgeCheck knowledgeCheck,
+            @Valid @ModelAttribute("multipleChoices") ArrayList<String> multipleChoices,
             BindingResult binding,
             Model model, HttpSession session) {
         if (binding.hasErrors()) {

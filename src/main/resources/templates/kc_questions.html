@@ -16,33 +16,114 @@
             <h4 th:text="${question.getTitle()}"></h4>
             <div th:switch="${question.getType()}">
                 <div th:case="'free'" class="">
-                    <input required class="" th:field="*{questionList[__${itemStat.index}__].question_marks}" type="text" name="question_free" id="question_free"
+                    <input class="" th:field="*{questionList[__${itemStat.index}__].question_marks}" type="text"
+                           name="question_free" id="question_free"
                            placeholder="Answer..">
                 </div>
                 <div th:case="'radio'" class="">
                     <div th:if="${question.getOpt1()}">
-                        <input class="" th:field="*{questionList[__${itemStat.index}__].question_marks}" type="radio" name="question_option_1" id="question_option_1"
-                               th:value="a">
+                        <input class="" th:field="*{questionList[__${itemStat.index}__].question_marks}" type="radio"
+                               name="question_option_1" id="question_option_1"
+                               th:value="'a'">
                         <label class="" for="question_option_1" th:text="${question.getOpt1()}">Option 1</label>
                     </div>
                     <div th:if="${question.getOpt2()}">
-                        <input class="" th:field="*{questionList[__${itemStat.index}__].question_marks}" type="radio" name="question_option_2" id="question_option_2"
-                               th:value="b">
+                        <input class="" th:field="*{questionList[__${itemStat.index}__].question_marks}" type="radio"
+                               name="question_option_2" id="question_option_2"
+                               th:value="'b'">
                         <label class="" for="question_option_2" th:text="${question.getOpt2()}">Option 2</label>
                     </div>
                     <div th:if="${question.getOpt3()}">
-                        <input class="" th:field="*{questionList[__${itemStat.index}__].question_marks}" type="radio" name="question_option_3" id="question_option_3"
-                               th:value="c">
+                        <input class="" th:field="*{questionList[__${itemStat.index}__].question_marks}" type="radio"
+                               name="question_option_3" id="question_option_3"
+                               th:value="'c'">
                         <label class="" for="question_option_3" th:text="${question.getOpt3()}">Option 3</label>
                     </div>
                     <div th:if="${question.getOpt4()}">
-                        <input class="" th:field="*{questionList[__${itemStat.index}__].question_marks}"  type="radio" name="question_option_4" id="question_option_4"
-                               th:value="d">
+                        <input class="" th:field="*{questionList[__${itemStat.index}__].question_marks}" type="radio"
+                               name="question_option_4" id="question_option_4"
+                               th:value="'d'">
                         <label class="" for="question_option_4" th:text="${question.getOpt4()}">Option 4</label>
                     </div>
                 </div>
+                <div th:case="'boolean'" class="">
+                    <div>
+                        <input class="" th:field="*{questionList[__${itemStat.index}__].question_marks}" type="radio"
+                               name="true_option" id="true_option"
+                               th:value="'true'">
+                        <label class="" for="true_option">True</label>
+                    </div>
+                    <div>
+                        <input class="" th:field="*{questionList[__${itemStat.index}__].question_marks}" type="radio"
+                               name="false_option" id="false_option"
+                               th:value="'false'">
+                        <label class="" for="false_option">False</label>
+                    </div>
+                </div>
+                <div th:case="'mult'" class=""> <!-- MULTIPLE CHOICE QUESTION TO WORK, QUESTION DOMAIN HAS TO BE REMADE! -->
+                    <div th:if="${question.getOpt1()}">
+                        <fieldset id="mult_radio_1">
+                        <h3 th:text="${question.getOpt1()}"></h3>
+                        <input type="radio" name="mult_radio_1"
+                               id="mult_radio_true_1"
+                               th:value="true"
+                               th:field="*{multipleAnswers}"/>
+                        <label class="" for="mult_radio_true_1">True</label>
+                        <input type="radio" name="mult_radio_1"
+                               id="mult_radio_false_1"
+                               th:value="false"
+                               th:field="*{multipleAnswers}"/>
+                        <label class="" for="mult_radio_false_1">False</label>
+                        </fieldset>
+                    </div>
+                    <div th:if="${question.getOpt2()}">
+                        <fieldset id="mult_radio_2">
+                        <h3 th:text="${question.getOpt2()}"></h3>
+                        <input type="radio" name="mult_radio_2"
+                               id="mult_radio_true_2"
+                               th:value="true"
+                               th:field="*{multipleAnswers}"/>
+                        <label class="" for="mult_radio_true_2">True</label>
+                        <input type="radio" name="mult_radio_2"
+                               id="mult_radio_false_2"
+                               th:value="false"
+                               th:field="*{multipleAnswers}"/>
+                        <label class="" for="mult_radio_false_2">False</label>
+                        </fieldset>
+                    </div>
+                    <div th:if="${question.getOpt3()}">
+                        <fieldset id="mult_radio_3">
+                        <h3 th:text="${question.getOpt3()}"></h3>
+                        <input type="radio" name="mult_radio_3"
+                               id="mult_radio_true_3"
+                               th:value="true"
+                               th:field="*{multipleAnswers}"/>
+                        <label class="" for="mult_radio_true_3">True</label>
+                        <input type="radio" name="mult_radio_3"
+                               id="mult_radio_false_3"
+                               th:value="false"
+                               th:field="*{multipleAnswers}"/>
+                        <label class="" for="mult_radio_false_3">False</label>
+                        </fieldset>
+                    </div>
+                    <div th:if="${question.getOpt4()}">
+                        <fieldset id="mult_radio_4">
+                            <h3 th:text="${question.getOpt4()}"></h3>
+                            <input type="radio" name="mult_radio_4"
+                                   id="mult_radio_true_4"
+                                   th:value="true"
+                                   th:field="*{multipleAnswers}"/>
+                            <label class="" for="mult_radio_true_4">True</label>
+                            <input type="radio" name="mult_radio_4"
+                                   id="mult_radio_false_4"
+                                   th:value="false"
+                                   th:field="*{multipleAnswers}"/>
+                            <label class="" for="mult_radio_false_4">False</label>
+                        </fieldset>
+                    </div>
+                    </div>
+                </div>
             </div>
-
             <br>
         </div>
         <button class="btn-big button" type="submit">Submit knowledge check</button>

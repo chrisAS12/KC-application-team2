@@ -8,7 +8,7 @@ import java.util.List;
 
 public class QuestionDisplayDto {
     public List<Question> questionList;
-    public String answer = "";
+    public List<Boolean> multipleAnswers;
 
     public List<Question> getQuestionList() {
         return questionList;
@@ -18,25 +18,27 @@ public class QuestionDisplayDto {
         this.questionList = questionList;
     }
 
-    public String getAnswer() {
-        return answer;
-    }
-
-    public void setAnswer(String answer) {
-        this.answer = answer;
-    }
-
-
     public void addQuestion(Question question) {
         this.questionList.add(question);
+    }
+
+    public List<Boolean> getMultipleAnswers() {
+        return multipleAnswers;
+    }
+
+    public void setMultipleAnswers(List<Boolean> multipleAnswers) {
+        this.multipleAnswers = multipleAnswers;
     }
 
     public Question getQuestion(int index){
         return questionList.get(index);
     }
 
-    public  QuestionDisplayDto(int size){
-        questionList = new ArrayList<>(size);
+    public  QuestionDisplayDto(int questionListSize, int multipleAnswerSize){
+        questionList = new ArrayList<>(questionListSize);
+        multipleAnswers = new ArrayList<Boolean>(multipleAnswerSize);
     }
-    public QuestionDisplayDto() {questionList = new ArrayList<>();}
+    public QuestionDisplayDto() {questionList = new ArrayList<>();
+        multipleAnswers = new ArrayList<Boolean>();}
+
 }

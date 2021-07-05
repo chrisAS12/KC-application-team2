@@ -11,7 +11,7 @@
 <div th:if="${not #lists.isEmpty(knowledgeChecks)}">
     <h2 class="text-inner-shadow">Choose a test</h2>
     <div class="btn-big" th:each="knowledgeCheck:${knowledgeChecks}">
-        <div>
+        <div th:if="${knowledgeCheck.isShow != false}">
             <a th:href="'takeTest/'+ @{${knowledgeCheck.id}}"><button th:text="${knowledgeCheck.name} "/></a>
         </div>
     </div>
