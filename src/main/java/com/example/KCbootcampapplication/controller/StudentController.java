@@ -47,5 +47,4 @@ public class StudentController {
         model.addAttribute("questions", questions);
         return ""; // TODO: 7/5/2021 fix return page
     }
-
 }

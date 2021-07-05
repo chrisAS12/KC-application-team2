@@ -35,6 +35,7 @@ public class DatabaseTests {
         kc.setIsShow(true);
         kc.setStartTime(LocalDateTime.now());
         kc.setFinishTime(LocalDateTime.now());
+        tq.setKnowledgeCheck(kc);
         u.setEmail("test123@testtest.test");
         u.setPassword("test");
         u.setRole("student");
@@ -78,22 +79,22 @@ public class DatabaseTests {
         Random a = new Random();
         byte[] letters = new byte[7];
         int b = a.nextInt(30);
-            kc.setName("test Save Questions");
-            u.setName("Save questions tester");
-            dm.save(u);
-            dm.save(kc);
-            tq.setType("dbmsave");
+        kc.setName("test Save Questions");
+        u.setName("Save questions tester");
+        dm.save(u);
+        dm.save(kc);
+        tq.setType("dbmsave");
+        tq.setKnowledgeCheck(kc);
             while (b + 1 > 1) {
                 String testStr = new String(letters, Charset.forName("UTF-8"));
                 tq.setTitle(testStr);
                 tq.setAnswer("a" + b);
-                tq.setKnowledgeCheck(kc);
                 dm.save(tq);
                 questions.add(tq);
                 System.out.println(tq.getAnswer() + " " + tq.getClass());
                 b--;
             }
             dm.saveQuestions(questions);
-            assertEquals("Not the right test",tq.getKnowledgeCheck(), dm.getQuestionsFromTestId(kc.getId()).getKnowledgeCheck().getId());
+            assertEquals("Not the right test",tq.getKnowledgeCheck().getQuestion(), dm.getQuestionsForKc(kc.getId()));
     }
 }
