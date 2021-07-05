@@ -189,11 +189,11 @@ public class DatabaseManager {
         return null;
     }
 
-    public List <Question> getQuestionsForKc(int kcId){
+    public List <Question> getQuestionsForKc(int id){
         var session = factory.openSession();
-        String hql = "FROM Question Q where Q.knowledgeCheck.id = :kcId";
+        String hql = "FROM Question Q where Q.knowledgeCheck.id = :id";
         Query query = session.createQuery(hql);
-        query.setParameter("kcId", kcId);
+        query.setParameter("id", id);
         try {
             return query.list();
         } catch (HibernateException ex) {
