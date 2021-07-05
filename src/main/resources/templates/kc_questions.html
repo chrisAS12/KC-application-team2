@@ -7,13 +7,13 @@
           integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
     <link href="../static/css/style.css" th:href="@{/css/style.css}" rel="stylesheet"/>
 </head>
-<body style="background-color: #F1F1F1;">
+<body style="background-color: #F1F1F1; margin-top: 15px; margin-left: 15px;margin-bottom: 15px">
 <div class="knowledge-check">
-    <h1 th:text="${knowledgeCheck.getName()}"></h1>
+    <h3 style="color: #C620FC"  th:text="${knowledgeCheck.getName()}"></h3>
     <form th:action="@{/student/tests/testTaken}" th:object="${form}" name="questions" id="questions" method="POST"
           enctype="multipart/form-data">
         <div th:each="question, itemStat : *{questionList}">
-            <h1 th:text="${question.getTitle()}"></h1>
+            <h4 th:text="${question.getTitle()}"></h4>
             <div th:switch="${question.getType()}">
                 <div th:case="'free'" class="">
                     <input required class="" th:field="*{questionList[__${itemStat.index}__].question_marks}" type="text" name="question_free" id="question_free"
@@ -45,7 +45,7 @@
 
             <br>
         </div>
-        <button class="" type="submit">Answer knowledge check</button>
+        <button class="btn-big button" type="submit">Submit knowledge check</button>
     </form>
 
 </div>
