@@ -41,4 +41,9 @@ public class KnowledgeCheck {
     // Quiz Question RelationShip
     @OneToMany(mappedBy = "knowledgeCheck") // TODO: 7/1/2021 need to check this line of code (mapped by) 
     private List<Question> question;
+
+    @Override
+    public String toString(){
+        return this.getName();
+    }
 }

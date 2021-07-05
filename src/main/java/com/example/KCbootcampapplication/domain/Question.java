@@ -49,4 +49,9 @@ public class Question {
     @ManyToOne(cascade = CascadeType.DETACH, fetch = FetchType.EAGER) // TODO: 7/1/2021 need to check this join
     @JoinColumn(name="question_kc_id", referencedColumnName = "kc_id", nullable = false)
     private KnowledgeCheck knowledgeCheck;
+
+    @Override
+    public String toString(){
+        return this.getTitle();
+    }
 }

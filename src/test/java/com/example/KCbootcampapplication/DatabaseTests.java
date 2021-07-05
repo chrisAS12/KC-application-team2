@@ -13,6 +13,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 import org.junit.Test;
+import org.springframework.test.context.event.annotation.AfterTestMethod;
+
 import static org.junit.Assert.*;
 
 public class DatabaseTests {
@@ -43,12 +45,12 @@ public class DatabaseTests {
         u.setName("John");
     }
 
-    @After
-    public void cleanUp(){
-        dm.delete(u);
-        dm.delete(tq);
-        dm.delete(kc);
-    }
+//    @After
+//    public void cleanUp(){
+//        dm.delete(u);
+//        dm.delete(tq);
+//        dm.delete(kc);
+//    }
 
 
     @Test
@@ -85,16 +87,15 @@ public class DatabaseTests {
         dm.save(kc);
         tq.setType("dbmsave");
         tq.setKnowledgeCheck(kc);
-            while (b + 1 > 1) {
-                String testStr = new String(letters, Charset.forName("UTF-8"));
-                tq.setTitle(testStr);
-                tq.setAnswer("a" + b);
-                dm.save(tq);
-                questions.add(tq);
-                System.out.println(tq.getAnswer() + " " + tq.getClass());
-                b--;
-            }
-            dm.saveQuestions(questions);
-            assertEquals("Not the right test",tq.getKnowledgeCheck().getQuestion(), dm.getQuestionsForKc(kc.getId()));
+        while (b + 1 > 1) {
+            String testStr = new String(letters, Charset.forName("UTF-8"));
+            tq.setTitle(testStr);
+            tq.setAnswer("a" + b);
+            dm.save(tq);
+            questions.add(tq);
+            b--;
+        }
+        dm.saveQuestions(questions);
+        assertEquals("Not the right test",questions.get(0), dm.getQuestionsForKc(kc.getId()).get(0));
     }
 }

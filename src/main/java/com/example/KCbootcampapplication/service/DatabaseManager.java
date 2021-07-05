@@ -135,27 +135,6 @@ public class DatabaseManager {
         }
     }
 
-    public Question getQuestionsFromTestId(int knowledgeCheckId) {
-        var session = factory.openSession();
-        try {
-            // FIXME
-            String hql = "FROM KnowledgeCheck K WHERE  K.question = :knowledgeCheckId";
-            Query query = session.createQuery(hql);
-
-            query.setParameter("knowledgeCheckId", knowledgeCheckId);
-            var results = query.list();
-
-            if (results.size() > 0) {
-                return (Question) results;
-            }
-        } catch (HibernateException ex) {
-            System.err.println(ex);
-        } finally {
-            session.close();
-        }
-        return null;
-    }
-
     public List<KnowledgeCheck> getKnowledgeChecksByNames(User user) {
         var session = factory.openSession();
         try {
@@ -191,11 +170,19 @@ public class DatabaseManager {
 
     public List <Question> getQuestionsForKc(int id){
         var session = factory.openSession();
-        String hql = "FROM Question Q where Q.knowledgeCheck.id = :id";
-        Query query = session.createQuery(hql);
-        query.setParameter("id", id);
         try {
-            return query.list();
+            List<Question> res = new ArrayList<>();
+            String hql = "FROM Question where knowledgeCheck.id = :id";
+            Query query = session.createQuery(hql);
+            query.setParameter("id", id);
+            var results = query.list();
+            if (results.size() > 0) {
+                for (Object o : results){
+                    Question q = (Question) o;
+                    res.add(q);
+                }
+                return res;
+            }
         } catch (HibernateException ex) {
             System.err.println(ex);
         } finally {
