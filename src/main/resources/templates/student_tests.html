@@ -8,11 +8,11 @@
     <link href="../static/css/style.css" th:href="@{/css/style.css}" rel="stylesheet"/>
 </head>
 <body style="background-color: #F1F1F1;">
-<div th:unless="${#list.isEmpty(knowledgeCheck)}">
+<div th:unless="${#list.isEmpty(knowledgeChecks)}">
     <h2 class="text-inner-shadow">Choose a test</h2>
     <div class="btn-big" th:each="knowledgeCheck:${knowledgeChecks}">
         <div>
-            <button th:text="${knowledgeCheck.kc_name}"/>
+            <button th:text="${knowledgeCheck.name}"/>
         </div>
     </div>
 </div>

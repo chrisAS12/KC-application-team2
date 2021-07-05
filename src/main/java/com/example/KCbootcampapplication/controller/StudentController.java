@@ -16,6 +16,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import java.util.ArrayList;
+import java.util.List;
 
 @Controller
 @RequestMapping("/student")
@@ -31,8 +32,8 @@ public class StudentController {
         var user = (User) session.getAttribute(SessionData.student);
         model.addAttribute("user_id", user.getId());
         System.err.println(user.getName());
-        var knowledgeChecks = dbManager.getAllKnowledgeChecks();
-        model.addAttribute("knowledgeCheck", knowledgeChecks);
+        List<KnowledgeCheck> knowledgeChecks = dbManager.getAllKnowledgeChecks();
+        model.addAttribute("knowledgeChecks", knowledgeChecks);
         return "student_tests";
     }
 
