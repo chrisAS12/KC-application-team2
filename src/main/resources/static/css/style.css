@@ -19,12 +19,12 @@
     background-color: #C620FC;
 }
 
-.btn-small button {
+.btn-small button, button[type=submit] {
     font: 20px Roboto, sans-serif;
     line-height: 30px;
     align-items: center;
     text-align: center;
-    width: 75px;
+    width: auto;
     border: none;
     border-radius: 5px;
     background-color: black;
@@ -32,7 +32,7 @@
     cursor: pointer;
 }
 
-.btn-small button:hover {
+.btn-small button:hover, button[type=submit]:hover {
     background-color: #C620FC;
 }
 
@@ -47,6 +47,11 @@
     font-weight: bold;
     margin-top: 0;
     margin-bottom: 2px;
+}
+
+.text-subpage {
+    color: #C620FC;
+    font-size: 30px;
 }
 
 /* PAGES */
@@ -83,4 +88,8 @@
 ul {
     display: inline-block;
     text-align: left;
+}
+
+.ul-no-bullets {
+    list-style-type: none;
 }

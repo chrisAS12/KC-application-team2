@@ -9,10 +9,11 @@
 </head>
 <body style="background-color: #F1F1F1;">
 <div class="user-creation">
-    <h3>Create a new user.</h3>
+    <div class="login-container">
+    <h3 class="text-subpage">Create a new user</h3>
     <form th:action="@{/admin/create_user}" th:object="${user}" name="newUser" id="newUser" method="POST"
           enctype="multipart/form-data">
-        <ul>
+        <ul class="ul-no-bullets">
             <li>
                 <input required class="" th:field="*{name}" type="text" name="user_name" id="user_name"
                        placeholder="User name">
@@ -43,8 +44,9 @@
             </li>
         </ul>
         <br>
-        <button type="submit">Create user</button>
+        <button class="btn-small" type="submit">Create user</button>
     </form>
+</div>
 </div>
 </body>
 </html>
