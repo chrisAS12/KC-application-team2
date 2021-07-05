@@ -8,12 +8,13 @@
     <link href="../static/css/style.css" th:href="@{/css/style.css}" rel="stylesheet"/>
 </head>
 <body style="background-color: #F1F1F1;">
+<div class="login-container">
 <div class="user-creation">
-    <h3>Create a new knowledge check.</h3>
+    <h3 class="text-subpage">Create a new knowledge check</h3>
     <form th:action="@{/admin/new-knowledge-check}" th:object="${knowledge_check}" name="new_knowledge_check"
           id="new_knowledge_check" method="POST"
           enctype="multipart/form-data">
-        <ul>
+        <ul class="list-unstyled">
             <li>
                 <input required class="" th:field="*{name}" type="text" name="knowledge_check_name"
                        id="knowledge_check_name"
@@ -41,8 +42,9 @@
              adding users to the knowledge check? -->
         </ul>
         <br>
-        <button type="submit">Create knowledge check.</button>
+        <button type="submit">Create knowledge check</button>
     </form>
+</div>
 </div>
 </body>
 </html>
