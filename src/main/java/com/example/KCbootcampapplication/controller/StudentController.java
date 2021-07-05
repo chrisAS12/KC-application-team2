@@ -31,18 +31,18 @@ public class StudentController {
         var user = (User) session.getAttribute(SessionData.student);
         model.addAttribute("user_id", user.getId());
         System.err.println(user.getName());
-        var knowledgeChecks = dbManager.getKnowledgeChecksByNames(user);
+        var knowledgeChecks = dbManager.getAllKnowledgeChecks();
         model.addAttribute("knowledgeCheck", knowledgeChecks);
         return "student_tests";
     }
 
     @GetMapping ("/tests/{id}")
-    public String showQuestions (@PathVariable int id, Model model, HttpSession session){
+    public String showQuestions (@PathVariable("id") int id, Model model, HttpSession session){
         var user = (User) session.getAttribute(SessionData.student);
         model.addAttribute("user_id", user.getId());
         System.err.println(user.getName());
         //var knowledgeCheck = dbManager.getKcById(id);
-        var questions = dbManager.getQuestionsforKc(id);
+        var questions = dbManager.getQuestionsForKc(id);
         model.addAttribute("questions", questions);
         return ""; // TODO: 7/5/2021 fix return page
     }

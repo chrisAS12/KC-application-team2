@@ -31,7 +31,7 @@ public class DatabaseTests {
         tq.setTitle("what is life");
         tq.setType("test");
         tq.setAnswer("a");
-        kc.setKcName("Test");
+        kc.setName("Test");
         kc.setIsShow(true);
         kc.setStartTime(LocalDateTime.now());
         kc.setFinishTime(LocalDateTime.now());
@@ -78,7 +78,7 @@ public class DatabaseTests {
         Random a = new Random();
         byte[] letters = new byte[7];
         int b = a.nextInt(30);
-            kc.setKcName("test Save Questions");
+            kc.setName("test Save Questions");
             u.setName("Save questions tester");
             dm.save(u);
             dm.save(kc);

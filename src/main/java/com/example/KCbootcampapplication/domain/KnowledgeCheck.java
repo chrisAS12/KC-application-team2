@@ -22,7 +22,7 @@ public class KnowledgeCheck {
 
     @NotEmpty
     @Column(name = "kc_name")
-    private String kcName;
+    private String name;
 
     @Column(name = "kc_show")
     private Boolean isShow;

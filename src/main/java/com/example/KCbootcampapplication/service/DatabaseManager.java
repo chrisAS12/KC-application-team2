@@ -189,7 +189,7 @@ public class DatabaseManager {
         return null;
     }
 
-    public List <Question> getQuestionsforKc(int kcId){
+    public List <Question> getQuestionsForKc(int kcId){
         var session = factory.openSession();
         var query = "FROM Question Q where Q.knowledgeCheck.id = :kcId ORDER BY Q.id asc";
 
@@ -197,6 +197,18 @@ public class DatabaseManager {
             return session.createQuery(query).list();
         } catch (HibernateException ex) {
             System.err.println(ex);
+        } finally {
+            session.close();
+        }
+        return new ArrayList<>();
+    }
+
+    public List<KnowledgeCheck> getAllKnowledgeChecks() {
+        var session = factory.openSession();
+        try {
+            return session.createQuery("FROM KnowledgeCheck").list();
+        } catch (HibernateException exception) {
+            System.err.println(exception);
         } finally {
             session.close();
         }
