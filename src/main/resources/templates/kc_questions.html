@@ -12,31 +12,31 @@
     <h1 th:text="${knowledgeCheck.getName()}"></h1>
     <form th:action="@{/student/tests/testTaken}" th:object="${form}" name="questions" id="questions" method="POST"
           enctype="multipart/form-data">
-        <div th:each="question, stat : *{questionList}">
+        <div th:each="question, itemStat : *{questionList}">
             <h1 th:text="${question.getTitle()}"></h1>
             <div th:switch="${question.getType()}">
                 <div th:case="'free'" class="">
-                    <input required class="" th:field="*{questionList[__${stat.index}__].type}" type="text" name="question_marks" id="question_marks"
+                    <input required class="" th:field="*{questionList[__${itemStat.index}__].question_marks}" type="text" name="question_free" id="question_free"
                            placeholder="Answer..">
                 </div>
                 <div th:case="'radio'" class="">
                     <div th:if="${question.getOpt1()}">
-                        <input class="" th:field="*{question.question_marks}" type="radio" name="question_option_1" id="question_option_1"
+                        <input class="" th:field="*{questionList[__${itemStat.index}__].question_marks}" type="radio" name="question_option_1" id="question_option_1"
                                th:value="a">
                         <label class="" for="question_option_1" th:text="${question.getOpt1()}">Option 1</label>
                     </div>
                     <div th:if="${question.getOpt2()}">
-                        <input class="" th:field="*{question.question_marks}" type="radio" name="question_option_2" id="question_option_2"
+                        <input class="" th:field="*{questionList[__${itemStat.index}__].question_marks}" type="radio" name="question_option_2" id="question_option_2"
                                th:value="b">
                         <label class="" for="question_option_2" th:text="${question.getOpt2()}">Option 2</label>
                     </div>
                     <div th:if="${question.getOpt3()}">
-                        <input class="" th:field="*{question.question_marks}" type="radio" name="question_option_3" id="question_option_3"
+                        <input class="" th:field="*{questionList[__${itemStat.index}__].question_marks}" type="radio" name="question_option_3" id="question_option_3"
                                th:value="c">
                         <label class="" for="question_option_3" th:text="${question.getOpt3()}">Option 3</label>
                     </div>
                     <div th:if="${question.getOpt4()}">
-                        <input class="" th:field="*{question.question_marks}" type="radio" name="question_option_4" id="question_option_4"
+                        <input class="" th:field="*{questionList[__${itemStat.index}__].question_marks}"  type="radio" name="question_option_4" id="question_option_4"
                                th:value="d">
                         <label class="" for="question_option_4" th:text="${question.getOpt4()}">Option 4</label>
                     </div>
@@ -52,4 +52,7 @@
 </body>
 </html>
 
-<!-- HTML page for radio button type question creation. -->
+<!-- th:field="*{question.question_marks}"
+th:field="${form.questionList.get(__${itemStat.index}__).question_marks}
+th:field="${questionList[__${itemStat.index}__].question_marks}"
+ -->

@@ -10,6 +10,23 @@ public class QuestionDisplayDto {
     public List<Question> questionList;
     public String answer = "";
 
+    public List<Question> getQuestionList() {
+        return questionList;
+    }
+
+    public void setQuestionList(List<Question> questionList) {
+        this.questionList = questionList;
+    }
+
+    public String getAnswer() {
+        return answer;
+    }
+
+    public void setAnswer(String answer) {
+        this.answer = answer;
+    }
+
+
     public void addQuestion(Question question) {
         this.questionList.add(question);
     }
@@ -18,11 +35,8 @@ public class QuestionDisplayDto {
         return questionList.get(index);
     }
 
-    public List<Question> getAllQuestions(){
-        return questionList;
-    }
-
     public  QuestionDisplayDto(int size){
         questionList = new ArrayList<>(size);
     }
+    public QuestionDisplayDto() {questionList = new ArrayList<>();}
 }

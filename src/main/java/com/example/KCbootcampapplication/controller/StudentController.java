@@ -48,18 +48,17 @@ public class StudentController {
         for(int i = 0; i < questions.size(); i++){
             questionForm.addQuestion(questions.get(i));
         }
+        System.err.println(questionForm.questionList.get(0));
         model.addAttribute("form", questionForm);
         KnowledgeCheck knowledgeCheck = dbManager.getKcById(id);
         model.addAttribute("knowledgeCheck", knowledgeCheck);
-       // List<UserAnswer> userAnswers = new ArrayList<>(questions.size());
-       // model.addAttribute("answers", userAnswers);
         return "kc_questions";
     }
 
     @PostMapping("/tests/testTaken")
     public String saveAnswers(
-            @ModelAttribute("form") QuestionDisplayDto questionDTO,
-            @ModelAttribute("knowledgeCheck") KnowledgeCheck knowledgeCheck,
+            @Valid @ModelAttribute("form") QuestionDisplayDto questionDTO,
+            @Valid @ModelAttribute("knowledgeCheck") KnowledgeCheck knowledgeCheck,
             BindingResult binding,
             Model model, HttpSession session) {
         if (binding.hasErrors()) {
