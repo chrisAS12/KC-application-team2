@@ -29,7 +29,6 @@ public class LoginController {
     //HttpSession session
     @PostMapping("/login")
     public ModelAndView adminLogin(LoginDto userData, Model model, HttpServletRequest request) {
-        System.err.println(userData.getEmail() + "  " + userData.getPwd());
         var user = dm.login(userData.getEmail(), userData.getPwd());
         if (user == null) {
             model.addAttribute("error", "Unable to login");
@@ -39,7 +38,6 @@ public class LoginController {
         if (user.getRole().equals("admin")) {
             request.getSession().setAttribute(SessionData.admin, user);
             model.addAttribute("user", user);
-            System.err.println(user);
             return new ModelAndView("redirect:/admin/dashboard");
         }
         if (user.getRole().equals("student")) {

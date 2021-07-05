@@ -3,6 +3,8 @@ package com.example.KCbootcampapplication.controller;
 import com.example.KCbootcampapplication.domain.KnowledgeCheck;
 import com.example.KCbootcampapplication.domain.Question;
 import com.example.KCbootcampapplication.domain.User;
+import com.example.KCbootcampapplication.domain.UserAnswer;
+import com.example.KCbootcampapplication.dto.QuestionDisplayDto;
 import com.example.KCbootcampapplication.service.DatabaseManager;
 import com.example.KCbootcampapplication.service.SessionData;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -23,6 +25,7 @@ import java.util.List;
 public class StudentController {
 
     private DatabaseManager dbManager;
+
     public StudentController() {
         dbManager = new DatabaseManager();
     }
@@ -31,20 +34,37 @@ public class StudentController {
     public String getTestsPage(Model model, HttpSession session) {
         var user = (User) session.getAttribute(SessionData.student);
         model.addAttribute("user_id", user.getId());
-        System.err.println(user.getName());
         List<KnowledgeCheck> knowledgeChecks = dbManager.getAllKnowledgeChecks();
         model.addAttribute("knowledgeChecks", knowledgeChecks);
         return "student_tests";
     }
 
-    @GetMapping ("/tests/takeTest/{id}")
-    public String showQuestions (@PathVariable("id") int id, Model model, HttpSession session){
+    @GetMapping("/tests/takeTest/{id}")
+    public String showQuestions(@PathVariable("id") int id, Model model, HttpSession session) {
         var user = (User) session.getAttribute(SessionData.student);
         model.addAttribute("user_id", user.getId());
-        System.err.println(user.getName());
         List<Question> questions = dbManager.getQuestionsForKc(id);
-       // System.err.println("im here boy. ");
-         model.addAttribute("questions", questions);
+        QuestionDisplayDto questionForm = new QuestionDisplayDto(questions.size());
+        for(int i = 0; i < questions.size(); i++){
+            questionForm.addQuestion(questions.get(i));
+        }
+        model.addAttribute("form", questionForm);
+        KnowledgeCheck knowledgeCheck = dbManager.getKcById(id);
+        model.addAttribute("knowledgeCheck", knowledgeCheck);
+       // List<UserAnswer> userAnswers = new ArrayList<>(questions.size());
+       // model.addAttribute("answers", userAnswers);
         return "kc_questions";
+    }
+
+    @PostMapping("/tests/testTaken")
+    public String saveAnswers(
+            @ModelAttribute("form") QuestionDisplayDto questionDTO,
+            @ModelAttribute("knowledgeCheck") KnowledgeCheck knowledgeCheck,
+            BindingResult binding,
+            Model model, HttpSession session) {
+        if (binding.hasErrors()) {
+            return "redirect:/tests/takeTest/" + knowledgeCheck.getId();
+        }
+        return "redirect:/student/tests"; // after creating a new user redirect to dashboard.
     }
 }

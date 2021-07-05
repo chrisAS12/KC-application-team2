@@ -135,21 +135,6 @@ public class DatabaseManager {
         }
     }
 
-    public List<KnowledgeCheck> getKnowledgeChecksByNames(User user) {
-        var session = factory.openSession();
-        try {
-            String hql = "FROM KnowledgeCheck K WHERE  K.user = :user";
-            Query query = session.createQuery(hql);
-            query.setParameter("user", user);
-            return query.list();
-        } catch (HibernateException ex) {
-            System.err.println(ex);
-        } finally {
-            session.close();
-        }
-        return null;
-    }
-
     public void createQuestion() {
         Question question = new Question();
     }
@@ -178,9 +163,8 @@ public class DatabaseManager {
             var results = query.list();
             if (results.size() > 0) {
                 for (Object o : results){
-                    System.err.println(results.size() + "======================================");
                     Question q = (Question) o;
-                    System.err.println(q.getTitle());
+                   // System.err.println(q.getTitle());        //FOR TEST PURPOSES
                     res.add(q);
                 }
                 return res;

@@ -23,7 +23,7 @@ public class UserAnswer {
     @Column(name = "user_answer_iscorrect")
     private boolean isCorrect;
 
-    @Column(name = "user_id") // TODO: 7/4/2021 need to store user calculated results
+    @Column(name = "user_id")
     private int user_id;
 
     @Column(name="question_id")
