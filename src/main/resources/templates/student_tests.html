@@ -10,9 +10,9 @@
 <body style="background-color: #F1F1F1;">
 <div th:unless="${#list.isEmpty(knowledgeCheck)}">
     <h2 class="text-inner-shadow">Choose a test</h2>
-    <div class="btn-big">
+    <div class="btn-big" th:each="knowledgeCheck:${knowledgeChecks}">
         <div>
-            <button>Knowledge Check 1</button>
+            <button th:text="${knowledgeCheck.kc_name}"/>
         </div>
     </div>
 </div>
