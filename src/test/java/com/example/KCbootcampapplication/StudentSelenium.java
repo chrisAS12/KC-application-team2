@@ -51,6 +51,7 @@ public class StudentSelenium {
         driver.get(url + "login");
         driver.findElement(By.name("email")).sendKeys("test@test.com");
         driver.findElement(By.name("pwd")).sendKeys("test123");
+        sleep();
         driver.findElement(By.cssSelector("button[type=\"submit\"]")).click();
         sleep();
         assertEquals("Didnt get transfered to tests","http://localhost:8080/student/tests/",driver.getCurrentUrl());
@@ -64,14 +65,18 @@ public class StudentSelenium {
             e.click();
             sleep();
             assertTrue(driver.getCurrentUrl().contains("takeTest/"));
-            assertTrue(driver.getTitle().contains("Knowledge check"));
+            assertTrue(driver.getTitle().contains("Knowledge check")); //just checking first test for now
             return;
         }
+        sleep();
     }
 
     @Test
     public void test03submitKC(){
+        driver.findElement(By.id("question_free")).sendKeys("test KC Sel");
+        sleep();
         driver.findElement(By.cssSelector("button[type=\"submit\"]")).click();
+        sleep();
     }
 
     @Test
@@ -82,9 +87,11 @@ public class StudentSelenium {
             sleep();
             assertTrue(driver.getCurrentUrl().contains("takeTest/"));
             assertTrue(driver.getTitle().contains("Knowledge check"));
-            break;
+            break; //just checking first KC button for now
         }
+        sleep();
         driver.navigate().back();
+        sleep();
     }
 
     @AfterClass
