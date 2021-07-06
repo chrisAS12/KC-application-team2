@@ -78,8 +78,6 @@ public class DatabaseTests {
     public void test04_DBMSaveAndGetQuestions(){
         questions = new ArrayList<>();
         Random a = new Random();
-        byte[] letters = new byte[7];
-        new Random().nextBytes(letters);
         int b = a.nextInt(30);
         kc.setName("test Save Questions");
         u.setName("Save questions tester");
@@ -87,16 +85,29 @@ public class DatabaseTests {
         dm.save(kc);
         tq.setType("dbmsave");
         tq.setKnowledgeCheck(kc);
-        while (b + 1 > 1) {
-            String testStr = new String(letters, Charset.forName("UTF-8"));
-            tq.setTitle(testStr);
+        int i = 0;
+        String testStr = "Test question";
+        while (b + 1 > 0) {
+            String testQ = testStr + i;
+            tq.setTitle(testQ);
             tq.setAnswer("a" + b);
             dm.save(tq);
             questions.add(tq);
             b--;
+            i++;
         }
         dm.saveQuestions(questions);
-        assertEquals("Not the right test", questions.get(0), dm.getQuestionsForKc(kc.getId()).get(0)); //should rewrite random string to get proper results
+        System.err.println(dm.getQuestionsForKc(kc.getId()).get(0).getTitle() + "===========");
+        System.err.println(questions.get(0).getTitle() + "============");
+        List<Question> ab = dm.getQuestionsForKc(kc.getId());
+        for (Question q : ab){
+            System.err.println("Got: " + q.getTitle() + "====================" +q.getId());
+        }
+        for (Question cd : questions){
+            System.err.println("Expected: " + cd.getTitle() + "====================" + cd.getId());
+        }
+        //compares the last question
+        assertEquals("Not the right test", questions.get(questions.size()-1).getTitle(), dm.getQuestionsForKc(kc.getId()).get(dm.getQuestionsForKc(kc.getId()).size()-1).getTitle());
     }
 
 //    Question ab = new Question();

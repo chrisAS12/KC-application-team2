@@ -38,7 +38,7 @@ class KcBootcampApplicationTests{
 	}
 
 	@Test
-	public void loginTest() throws Exception {
+	public void loginUp() throws Exception {
 		this.mockMvc.perform(get("/login")).andDo(print()).andExpect(status().isOk());
 	}
 
