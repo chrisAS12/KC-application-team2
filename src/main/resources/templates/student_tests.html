@@ -8,6 +8,10 @@
     <link href="../static/css/style.css" th:href="@{/css/style.css}" rel="stylesheet"/>
 </head>
 <body style="background-color: #F1F1F1;">
+<div class="btn-small">
+    <button class="btn-small" style="margin-top: 1rem" onclick="location.href='/'" value="Logout">Logout</button>
+</div>
+
 <div th:if="${not #lists.isEmpty(knowledgeChecks)}">
     <h2 class="text-inner-shadow">Choose a test</h2>
     <div class="btn-big" th:each="knowledgeCheck:${knowledgeChecks}">
