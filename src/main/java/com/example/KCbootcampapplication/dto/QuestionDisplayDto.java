@@ -30,15 +30,18 @@ public class QuestionDisplayDto {
         this.multipleAnswers = multipleAnswers;
     }
 
-    public Question getQuestion(int index){
+    public Question getQuestion(int index) {
         return questionList.get(index);
     }
 
-    public  QuestionDisplayDto(int questionListSize, int multipleAnswerSize){
+    public QuestionDisplayDto(int questionListSize, int multipleAnswerSize) {
         questionList = new ArrayList<>(questionListSize);
         multipleAnswers = new ArrayList<Boolean>(multipleAnswerSize);
     }
-    public QuestionDisplayDto() {questionList = new ArrayList<>();
-        multipleAnswers = new ArrayList<Boolean>();}
+
+    public QuestionDisplayDto() {
+        questionList = new ArrayList<>();
+        multipleAnswers = new ArrayList<Boolean>();
+    }
 
 }

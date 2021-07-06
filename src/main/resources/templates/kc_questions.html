@@ -9,7 +9,7 @@
 </head>
 <body style="background-color: #F1F1F1; margin-top: 15px; margin-left: 15px;margin-bottom: 15px">
 <div class="knowledge-check">
-    <h3 style="color: #C620FC"  th:text="${knowledgeCheck.getName()}"></h3>
+    <h3 style="color: #C620FC" th:text="${knowledgeCheck.getName()}"></h3>
     <form th:action="@{/student/tests/testTaken}" th:object="${form}" name="questions" id="questions" method="POST"
           enctype="multipart/form-data">
         <div th:each="question, itemStat : *{questionList}">
@@ -60,50 +60,51 @@
                         <label class="" for="false_option">False</label>
                     </div>
                 </div>
-                <div th:case="'mult'" class=""> <!-- MULTIPLE CHOICE QUESTION TO WORK, QUESTION DOMAIN HAS TO BE REMADE! -->
+                <div th:case="'mult'" class="">
+                    <!-- MULTIPLE CHOICE QUESTION TO WORK, QUESTION DOMAIN HAS TO BE REMADE! -->
                     <div th:if="${question.getOpt1()}">
                         <fieldset id="mult_radio_1">
-                        <h3 th:text="${question.getOpt1()}"></h3>
-                        <input type="radio" name="mult_radio_1"
-                               id="mult_radio_true_1"
-                               th:value="true"
-                               th:field="*{multipleAnswers}"/>
-                        <label class="" for="mult_radio_true_1">True</label>
-                        <input type="radio" name="mult_radio_1"
-                               id="mult_radio_false_1"
-                               th:value="false"
-                               th:field="*{multipleAnswers}"/>
-                        <label class="" for="mult_radio_false_1">False</label>
+                            <h3 th:text="${question.getOpt1()}"></h3>
+                            <input type="radio" name="mult_radio_1"
+                                   id="mult_radio_true_1"
+                                   th:value="true"
+                                   th:field="*{multipleAnswers}"/>
+                            <label class="" for="mult_radio_true_1">True</label>
+                            <input type="radio" name="mult_radio_1"
+                                   id="mult_radio_false_1"
+                                   th:value="false"
+                                   th:field="*{multipleAnswers}"/>
+                            <label class="" for="mult_radio_false_1">False</label>
                         </fieldset>
                     </div>
                     <div th:if="${question.getOpt2()}">
                         <fieldset id="mult_radio_2">
-                        <h3 th:text="${question.getOpt2()}"></h3>
-                        <input type="radio" name="mult_radio_2"
-                               id="mult_radio_true_2"
-                               th:value="true"
-                               th:field="*{multipleAnswers}"/>
-                        <label class="" for="mult_radio_true_2">True</label>
-                        <input type="radio" name="mult_radio_2"
-                               id="mult_radio_false_2"
-                               th:value="false"
-                               th:field="*{multipleAnswers}"/>
-                        <label class="" for="mult_radio_false_2">False</label>
+                            <h3 th:text="${question.getOpt2()}"></h3>
+                            <input type="radio" name="mult_radio_2"
+                                   id="mult_radio_true_2"
+                                   th:value="true"
+                                   th:field="*{multipleAnswers}"/>
+                            <label class="" for="mult_radio_true_2">True</label>
+                            <input type="radio" name="mult_radio_2"
+                                   id="mult_radio_false_2"
+                                   th:value="false"
+                                   th:field="*{multipleAnswers}"/>
+                            <label class="" for="mult_radio_false_2">False</label>
                         </fieldset>
                     </div>
                     <div th:if="${question.getOpt3()}">
                         <fieldset id="mult_radio_3">
-                        <h3 th:text="${question.getOpt3()}"></h3>
-                        <input type="radio" name="mult_radio_3"
-                               id="mult_radio_true_3"
-                               th:value="true"
-                               th:field="*{multipleAnswers}"/>
-                        <label class="" for="mult_radio_true_3">True</label>
-                        <input type="radio" name="mult_radio_3"
-                               id="mult_radio_false_3"
-                               th:value="false"
-                               th:field="*{multipleAnswers}"/>
-                        <label class="" for="mult_radio_false_3">False</label>
+                            <h3 th:text="${question.getOpt3()}"></h3>
+                            <input type="radio" name="mult_radio_3"
+                                   id="mult_radio_true_3"
+                                   th:value="true"
+                                   th:field="*{multipleAnswers}"/>
+                            <label class="" for="mult_radio_true_3">True</label>
+                            <input type="radio" name="mult_radio_3"
+                                   id="mult_radio_false_3"
+                                   th:value="false"
+                                   th:field="*{multipleAnswers}"/>
+                            <label class="" for="mult_radio_false_3">False</label>
                         </fieldset>
                     </div>
                     <div th:if="${question.getOpt4()}">
@@ -121,13 +122,14 @@
                             <label class="" for="mult_radio_false_4">False</label>
                         </fieldset>
                     </div>
-                    </div>
                 </div>
             </div>
-            <br>
         </div>
-        <button class="btn-big button" type="submit">Submit knowledge check</button>
+        <br>
     </form>
+</div>
+<button class="btn-big button" type="submit">Submit knowledge check</button>
+</form>
 </div>
 </body>
 </html>

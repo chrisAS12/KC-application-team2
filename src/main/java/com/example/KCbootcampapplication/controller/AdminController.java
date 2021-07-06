@@ -98,8 +98,55 @@ public class AdminController {
             System.err.println(binding.toString());
             return "redirect:/create-multiple-choice-question-view/" + knowledgeCheck.getId();
         }
-        System.err.println(knowledgeCheck.getId() + "     " + question.getTitle());
         question.setType("mult");
+        question.setKnowledgeCheck(knowledgeCheck);
+        dbManager.save(question);
+        return "redirect:/admin/knowledge-checks";
+    }
+
+    @GetMapping("/create-radio-button-question-view/{id}")
+    public String createRadioButtonQuestionView(@PathVariable("id") int id,
+                                                Model model, HttpSession session) {
+        KnowledgeCheck knowledgeCheck = dbManager.getKcById(id);
+        model.addAttribute("knowledgeCheck", knowledgeCheck);
+        model.addAttribute("question", new Question());
+        return "create_radio_button_question";
+    }
+
+    @PostMapping("/create-radio-button-question/{id}")
+    public String addRadioButtonQuestion(@PathVariable("id") int id,
+                                         @Valid @ModelAttribute("question") Question question,
+                                         BindingResult binding, Model model) {
+        KnowledgeCheck knowledgeCheck = dbManager.getKcById(id);
+        if (binding.hasErrors()) {
+            System.err.println(binding.toString());
+            return "redirect:/create_radio_button_question/" + knowledgeCheck.getId();
+        }
+        question.setType("radio");
+        question.setKnowledgeCheck(knowledgeCheck);
+        dbManager.save(question);
+        return "redirect:/admin/knowledge-checks";
+    }
+
+    @GetMapping("/create-free-question-view/{id}")
+    public String createFreeQuestionView(@PathVariable("id") int id,
+                                                Model model, HttpSession session) {
+        KnowledgeCheck knowledgeCheck = dbManager.getKcById(id);
+        model.addAttribute("knowledgeCheck", knowledgeCheck);
+        model.addAttribute("question", new Question());
+        return "create_free_question";
+    }
+
+    @PostMapping("/create-free-question/{id}")
+    public String addFreeQuestion(@PathVariable("id") int id,
+                                         @Valid @ModelAttribute("question") Question question,
+                                         BindingResult binding, Model model) {
+        KnowledgeCheck knowledgeCheck = dbManager.getKcById(id);
+        if (binding.hasErrors()) {
+            System.err.println(binding.toString());
+            return "redirect:/create_radio_button_question/" + knowledgeCheck.getId();
+        }
+        question.setType("free");
         question.setKnowledgeCheck(knowledgeCheck);
         dbManager.save(question);
         return "redirect:/admin/knowledge-checks";

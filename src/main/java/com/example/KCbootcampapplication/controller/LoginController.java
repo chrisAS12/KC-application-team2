@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 public class LoginController {
 
     private DatabaseManager dm;
+
     public LoginController() {
         dm = new DatabaseManager();
     }
