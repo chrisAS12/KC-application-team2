@@ -8,18 +8,22 @@
     <link href="../static/css/style.css" th:href="@{/css/style.css}" rel="stylesheet"/>
 </head>
 <body style="background-color: #F1F1F1;">
+<div class="login-container">
 <div th:if="${not #lists.isEmpty(knowledgeChecks)}">
     <h2 class="text-inner-shadow">Choose a test</h2>
     <div class="btn-big black-border" th:each="knowledgeCheck:${knowledgeChecks}">
         <h1 th:text="${knowledgeCheck.getName()}"></h1>
         <a th:href="'/admin/create-multiple-choice-question-view/'+ @{${knowledgeCheck.id}}">
-            <input type="button" value="Add multiple choice question">
+            <input style="width:500px" type="button" value="Add multiple choice question">
         </a>
         <a th:href="'/admin/create-radio-button-question/'+ @{${knowledgeCheck.id}}">
-            <input type="button" value="Add radio button question">
+            <input style="width:500px" type="button" value="Add radio button question">
         </a>
     </div>
 </div>
-<input type="button" onclick="location.href='/admin/dashboard'" value="Back to dashboard">
+<div class="btn-small" style="align-items: center; text-align: center;">
+    <button onclick="location.href='/admin/dashboard'" value="Back to dashboard">Back to dashboard</button>
+</div>
+</div>
 </body>
 </html>
