@@ -1,16 +1,33 @@
 <!DOCTYPE html>
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<html style="font-size: 16px;"  xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="en">
+<html style="font-size: 16px;" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="en">
 
 <head>
     <Title>Welcome</Title>
     <link href="../static/css/style.css" th:href="@{/css/style.css}" rel="stylesheet"/>
     <style>
-        html, body, section, div {height: 100%; font-family: sans-serif;}
-        .container               {display: table; height: 100%; width: 100%;}
-        div                      {display: table-cell; width: 50%; padding: 1rem;}
-        .right-half              {vertical-align: middle;background-color: #F1F1F1;}
+        html, body, section, div {
+            height: 100%;
+            font-family: sans-serif;
+        }
+
+        .container {
+            display: table;
+            height: 100%;
+            width: 100%;
+        }
+
+        div {
+            display: table-cell;
+            width: 50%;
+            padding: 1rem;
+        }
+
+        .right-half {
+            vertical-align: middle;
+            background-color: #F1F1F1;
+        }
     </style>
 </head>
 <body>

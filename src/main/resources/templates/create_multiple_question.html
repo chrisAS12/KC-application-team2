@@ -11,7 +11,8 @@
 <div class="container-middle-align">
     <div class="question-creation">
         <h3 class="text-subpage">Create a multiple choice question</h3>
-        <form th:action="@{'/admin/create-question/' + ${knowledgeCheck.id} + '/mult'}" th:object="${question}" method="POST" enctype="multipart/form-data">
+        <form th:action="@{'/admin/create-question/' + ${knowledgeCheck.id} + '/mult'}" th:object="${question}"
+              method="POST" enctype="multipart/form-data">
             <ul class="list-unstyled">
                 <li>
             <textarea id="question" name="questionBody" class="form-control-textarea" rows="3"
@@ -38,9 +39,11 @@
             <button type="submit">Create question</button>
         </form>
         <div class="btn-small">
-        <button class="btn-small" style="margin-top: 1rem" onclick="location.href='/admin/knowledge-checks'" value="Back to tests">Back to tests</button>
+            <button class="btn-small" style="margin-top: 1rem" onclick="location.href='/admin/knowledge-checks'"
+                    value="Back to tests">Back to tests
+            </button>
         </div>
-        </div>
+    </div>
 </div>
 </body>
 </html>

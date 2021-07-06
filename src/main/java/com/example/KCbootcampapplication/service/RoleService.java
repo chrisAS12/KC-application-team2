@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Map;
 
 public class RoleService implements UserDetailsService {
-    private Map<String, User> roles = new HashMap<String, User>();
+    private final Map<String, User> roles = new HashMap<String, User>();
 
     @PostConstruct
     public void init() {
