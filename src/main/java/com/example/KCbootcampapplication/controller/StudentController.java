@@ -54,7 +54,6 @@ public class StudentController {
         for(int i = 0; i < questions.size(); i++){
             questionForm.addQuestion(questions.get(i));
         }
-        System.err.println(questionForm.questionList.get(0));
         model.addAttribute("form", questionForm);
         KnowledgeCheck knowledgeCheck = dbManager.getKcById(id);
         model.addAttribute("knowledgeCheck", knowledgeCheck);
