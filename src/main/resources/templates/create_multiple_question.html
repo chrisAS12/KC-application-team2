@@ -11,27 +11,27 @@
 <div class="container-middle-align">
     <div class="question-creation">
         <h3 class="text-subpage">Create a multiple choice question</h3>
-        <form th:action="@{/admin/create-multiple-choice-question/}" method="POST" enctype="multipart/form-data">
+        <form th:action="@{'/admin/create-multiple-choice-question/' + ${knowledgeCheck.id}}" th:object="${question}" method="POST" enctype="multipart/form-data">
             <ul class="list-unstyled">
                 <li>
             <textarea id="question" name="questionBody" class="form-control-textarea" rows="3"
-                      placeholder="Question itself" th:field="*{question.title}"></textarea>
+                      placeholder="Question itself" th:field="*{title}"></textarea>
                 </li>
                 <li>
-                    <input class="create-user-input" type="text" name="answer" th:field="*{question.answer}"
+                    <input class="create-user-input" type="text" name="answer" th:field="*{answer}"
                            placeholder="Answer [example: 'cx']">
                 </li>
                 <li>
-                    <input class="" type="text" name="opt1" th:field="*{question.opt1}" placeholder="Question option 1">
+                    <input class="" type="text" name="opt1" th:field="*{opt1}" placeholder="Question option 1">
                 </li>
                 <li>
-                    <input class="" type="text" name="opt2" th:field="*{question.opt2}" placeholder="Question option 2">
+                    <input class="" type="text" name="opt2" th:field="*{opt2}" placeholder="Question option 2">
                 </li>
                 <li>
-                    <input class="" type="text" name="opt3" th:field="*{question.opt3}" placeholder="Question option 3">
+                    <input class="" type="text" name="opt3" th:field="*{opt3}" placeholder="Question option 3">
                 </li>
                 <li>
-                    <input class="" type="text" name="opt4" th:field="*{question.opt4}" placeholder="Question option 4">
+                    <input class="" type="text" name="opt4" th:field="*{opt4}" placeholder="Question option 4">
                 </li>
             </ul>
             <br>

@@ -89,14 +89,16 @@ public class AdminController {
         return "create_multiple_question";
     }
 
-    @PostMapping("/create-multiple-choice-question")
-    public String addMultipleChoiceQuestion(@Valid @ModelAttribute("knowledgeCheck") KnowledgeCheck knowledgeCheck,
+    @PostMapping("/create-multiple-choice-question/{id}")
+    public String addMultipleChoiceQuestion(@PathVariable("id") int id,
                                             @Valid @ModelAttribute("question") Question question,
                                             BindingResult binding, Model model) {
+        KnowledgeCheck knowledgeCheck = dbManager.getKcById(id);
         if (binding.hasErrors()) {
             System.err.println(binding.toString());
             return "redirect:/create-multiple-choice-question-view/" + knowledgeCheck.getId();
         }
+        System.err.println(knowledgeCheck.getId() + "     " + question.getTitle());
         question.setType("mult");
         question.setKnowledgeCheck(knowledgeCheck);
         dbManager.save(question);

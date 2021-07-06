@@ -26,8 +26,7 @@ public class Question {
     @Column(name = "question_title", nullable = false)
     private String title;
 
-    @NotEmpty
-    @Column(name= "question_answer", nullable = false)
+    @Column(name= "question_answer")
     private String answer;
 
     @Column(name= "opt1")
