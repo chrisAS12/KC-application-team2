@@ -131,3 +131,9 @@ ul {
     display: inline-block;
     text-align: left;
 }
+.black-border {
+    border-style: solid;
+    border-color: black;
+    border-radius: 5%;
+    border-width: 3px;
+}

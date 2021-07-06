@@ -10,11 +10,16 @@
 <body style="background-color: #F1F1F1;">
 <div th:if="${not #lists.isEmpty(knowledgeChecks)}">
     <h2 class="text-inner-shadow">Choose a test</h2>
-    <div class="btn-big" th:each="knowledgeCheck:${knowledgeChecks}">
-        <div th:if="${knowledgeCheck.isShow != false}">
-            <a th:href="'takeTest/'+ @{${knowledgeCheck.id}}"><button th:text="${knowledgeCheck.name} "/></a>
-        </div>
+    <div class="btn-big black-border" th:each="knowledgeCheck:${knowledgeChecks}">
+        <h1 th:text="${knowledgeCheck.getName()}"></h1>
+        <a th:href="'/admin/create-multiple-choice-question-view/'+ @{${knowledgeCheck.id}}">
+            <input type="button" value="Add multiple choice question">
+        </a>
+        <a th:href="'/admin/create-radio-button-question/'+ @{${knowledgeCheck.id}}">
+            <input type="button" value="Add radio button question">
+        </a>
     </div>
 </div>
+<input type="button" onclick="location.href='/admin/dashboard'" value="Back to dashboard">
 </body>
 </html>

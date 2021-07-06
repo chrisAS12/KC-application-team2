@@ -10,45 +10,48 @@
 <body style="background-color: #F1F1F1;">
 <div class="user-creation">
     <div class="container-middle-align">
-    <h3 class="text-subpage">Create a new user</h3>
-    <form th:action="@{/admin/create_user}" th:object="${user}" name="newUser" id="newUser" method="POST"
-          enctype="multipart/form-data">
-        <ul class="list-unstyled">
-            <li>
-                <input required class="create-user-input" th:field="*{name}" type="text" name="user_name" id="user_name"
-                       placeholder="User name">
-            </li>
-            <li>
-                <input required class="create-user-input" th:field="*{email}" type="text" name="user_email" id="user_email"
-                       placeholder="User email">
-            </li>
-            <li>
-                <input required class="create-user-input" th:field="*{login}" type="text" name="user_login" id="user_login"
-                       placeholder="User identifier">
-            </li>
-            <li>
-                <input required class="create-user-input" th:field="*{password}" type="text" name="user_password" id="user_password"
-                       placeholder="User password">
-            </li>
-            <li>
-                <div class="">
-                    <input class="" th:field="*{role}" type="radio" name="user_role" id="user_role_user"
-                           value="student">
-                    <label class="" for="user_role_user">User</label>
-                </div>
-                <div class="">
-                    <input class="" th:field="*{role}" type="radio" name="user_role" id="user_role_admin"
-                           value="admin">
-                    <label class="" for="user_role_admin">Admin</label>
-                </div>
-            </li>
-        </ul>
-        <br>
-        <button class="btn-small" type="submit">Create user</button>
-    </form>
-</div>
+        <h3 class="text-subpage">Create a new user</h3>
+        <form th:action="@{/admin/create_user}" th:object="${user}" name="newUser" id="newUser" method="POST"
+              enctype="multipart/form-data">
+            <ul class="list-unstyled">
+                <li>
+                    <input required class="create-user-input" th:field="*{name}" type="text" name="user_name"
+                           id="user_name"
+                           placeholder="User name">
+                </li>
+                <li>
+                    <input required class="create-user-input" th:field="*{email}" type="text" name="user_email"
+                           id="user_email"
+                           placeholder="User email">
+                </li>
+                <li>
+                    <input required class="create-user-input" th:field="*{login}" type="text" name="user_login"
+                           id="user_login"
+                           placeholder="User identifier">
+                </li>
+                <li>
+                    <input required class="create-user-input" th:field="*{password}" type="text" name="user_password"
+                           id="user_password"
+                           placeholder="User password">
+                </li>
+                <li>
+                    <div class="">
+                        <input class="" th:field="*{role}" type="radio" name="user_role" id="user_role_user"
+                               value="student">
+                        <label class="" for="user_role_user">User</label>
+                    </div>
+                    <div class="">
+                        <input class="" th:field="*{role}" type="radio" name="user_role" id="user_role_admin"
+                               value="admin">
+                        <label class="" for="user_role_admin">Admin</label>
+                    </div>
+                </li>
+            </ul>
+            <br>
+            <button class="btn-small" type="submit">Create user</button>
+        </form>
+        <input type="button" onclick="location.href='/admin/dashboard'" value="Back to dashboard">
+    </div>
 </div>
 </body>
 </html>
-
-<!-- HTML page for radio button type question creation. -->

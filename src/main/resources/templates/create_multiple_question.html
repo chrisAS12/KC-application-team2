@@ -9,39 +9,36 @@
 </head>
 <body style="background-color: #F1F1F1;">
 <div class="container-middle-align">
-<div class="question-creation">
-    <h3 class="text-subpage"> Create a multiple choice question</h3>
-    <form th:action="@{/tests/create-multiple-choice}" method="POST" enctype="multipart/form-data">
-        <ul class="list-unstyled">
-            <li>
-                <input class="create-user-input" type="text" name="kc_id" placeholder="Knowledge check ID.">
-            </li>
-            <li>
+    <div class="question-creation">
+        <h3 class="text-subpage">Create a multiple choice question</h3>
+        <form th:action="@{/admin/create-multiple-choice-question/}" method="POST" enctype="multipart/form-data">
+            <ul class="list-unstyled">
+                <li>
             <textarea id="question" name="questionBody" class="form-control-textarea" rows="3"
-                      placeholder="Question itself"></textarea>
-            </li>
-            <li>
-                <input class="create-user-input" type="text" name="answer" placeholder="Answer [example: 'cx']">
-            </li>
-            <li>
-                <input class="" type="text" name="opt1" placeholder="Question option 1">
-            </li>
-            <li>
-                <input class="" type="text" name="opt2" placeholder="Question option 2">
-            </li>
-            <li>
-                <input class="" type="text" name="opt3" placeholder="Question option 3">
-            </li>
-            <li>
-                <input class="" type="text" name="opt4" placeholder="Question option 4">
-            </li>
-        </ul>
-        <br>
-        <button type="submit">Create question</button>
-    </form>
-</div>
+                      placeholder="Question itself" th:field="*{question.title}"></textarea>
+                </li>
+                <li>
+                    <input class="create-user-input" type="text" name="answer" th:field="*{question.answer}"
+                           placeholder="Answer [example: 'cx']">
+                </li>
+                <li>
+                    <input class="" type="text" name="opt1" th:field="*{question.opt1}" placeholder="Question option 1">
+                </li>
+                <li>
+                    <input class="" type="text" name="opt2" th:field="*{question.opt2}" placeholder="Question option 2">
+                </li>
+                <li>
+                    <input class="" type="text" name="opt3" th:field="*{question.opt3}" placeholder="Question option 3">
+                </li>
+                <li>
+                    <input class="" type="text" name="opt4" th:field="*{question.opt4}" placeholder="Question option 4">
+                </li>
+            </ul>
+            <br>
+            <button type="submit">Create question</button>
+        </form>
+        <input type="button" onclick="location.href='/admin/dashboard'" value="Back to dashboard">
+    </div>
 </div>
 </body>
 </html>
-
-<!-- HTML page for radio button type question creation. -->
