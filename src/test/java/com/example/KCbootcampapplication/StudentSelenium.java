@@ -18,7 +18,7 @@ import java.util.concurrent.TimeUnit;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 @SpringBootTest
-public class AutomatedTest{
+public class StudentSelenium {
 
     private static WebDriver driver;
     private static String url;
