@@ -10,16 +10,24 @@
 <body style="background-color: #F1F1F1;">
 <div class="container-middle-align">
   <div class="question-creation">
-    <h3 class="text-subpage">Create a free entry question</h3>
-    <form th:action="@{'/admin/create-question/' + ${knowledgeCheck.id} + '/free'}" th:object="${question}" method="POST" enctype="multipart/form-data">
+    <h3 class="text-subpage">Create a true false question</h3>
+    <form th:action="@{'/admin/create-question/' + ${knowledgeCheck.id} + '/boolean'}" th:object="${question}" method="POST" enctype="multipart/form-data">
       <ul class="list-unstyled">
         <li>
             <textarea id="question" name="questionBody" class="form-control-textarea" rows="3"
                       placeholder="Question itself" th:field="*{title}"></textarea>
         </li>
         <li>
-          <input class="create-user-input" type="text" name="answer" th:field="*{answer}"
-                 placeholder="Answer [example: '-=-']">
+          <div class="">
+            <input class="" th:field="*{answer}" type="radio" name="true_answer" id="true_answer"
+                   value="true">
+            <label class="" for="true_answer">True</label>
+          </div>
+          <div class="">
+            <input class="" th:field="*{answer}" type="radio" name="false_answer" id="false_answer"
+                   value="false">
+            <label class="" for="false_answer">False</label>
+          </div>
         </li>
       </ul>
       <br>

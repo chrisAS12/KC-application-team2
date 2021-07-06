@@ -12,14 +12,20 @@
     <h2 class="text-inner-shadow">Choose a test</h2>
     <div class="btn-big black-border" th:each="knowledgeCheck:${knowledgeChecks}">
         <h1 th:text="${knowledgeCheck.getName()}"></h1>
-        <a th:href="'/admin/create-multiple-choice-question-view/'+ @{${knowledgeCheck.id}}">
+        <a th:href="'/admin/create-question-view/'+ @{${knowledgeCheck.id}} +'/multipleQuestion'">
             <input style="width:500px" type="button" value="Add multiple choice question">
         </a>
-        <a th:href="'/admin/create-radio-button-question-view/'+ @{${knowledgeCheck.id}}">
+        <a th:href="'/admin/create-question-view/'+ @{${knowledgeCheck.id}} +'/radioQuestion'">
             <input style="width:500px" type="button" value="Add radio button question">
         </a>
-        <a th:href="'/admin/create-free-question-view/'+ @{${knowledgeCheck.id}}">
+        <a th:href="'/admin/create-question-view/'+ @{${knowledgeCheck.id}} +'/freeQuestion'">
             <input style="width:500px" type="button" value="Add a free question">
+        </a>
+        <a th:href="'/admin/create-question-view/'+ @{${knowledgeCheck.id}} +'/trueFalseQuestion'">
+            <input type="button" value="Add true false question">
+        </a>
+        <a th:href="'/admin/create-question-view/'+ @{${knowledgeCheck.id}} +'/matchQuestion'">
+            <input type="button" value="Add matching question">
         </a>
     </div>
 </div>

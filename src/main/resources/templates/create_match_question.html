@@ -10,8 +10,8 @@
 <body style="background-color: #F1F1F1;">
 <div class="container-middle-align">
   <div class="question-creation">
-    <h3 class="text-subpage">Create a free entry question</h3>
-    <form th:action="@{'/admin/create-question/' + ${knowledgeCheck.id} + '/free'}" th:object="${question}" method="POST" enctype="multipart/form-data">
+    <h3 class="text-subpage">Create a matching question</h3>
+    <form th:action="@{'/admin/create-question/' + ${knowledgeCheck.id} + '/match'}" th:object="${question}" method="POST" enctype="multipart/form-data">
       <ul class="list-unstyled">
         <li>
             <textarea id="question" name="questionBody" class="form-control-textarea" rows="3"
@@ -19,13 +19,27 @@
         </li>
         <li>
           <input class="create-user-input" type="text" name="answer" th:field="*{answer}"
-                 placeholder="Answer [example: '-=-']">
+                 placeholder="Answer [example: 'abc' descending order]">
+        </li>
+        <li>
+          <input class="" type="text" name="opt1" th:field="*{opt1}" placeholder="Question option 1">
+        </li>
+        <li>
+          <input class="" type="text" name="opt2" th:field="*{opt2}" placeholder="Question option 2">
+        </li>
+        <li>
+          <input class="" type="text" name="opt3" th:field="*{opt3}" placeholder="Question option 3">
+        </li>
+        <li>
+          <input class="" type="text" name="opt4" th:field="*{opt4}" placeholder="Question option 4">
         </li>
       </ul>
       <br>
       <button type="submit">Create question</button>
     </form>
-    <button class="btn-small" style="margin-top: 1rem" onclick="location.href='/admin/knowledge-checks'" value="Back to tests">Back to tests</button>
+    <div class="btn-small">
+      <button class="btn-small" style="margin-top: 1rem" onclick="location.href='/admin/knowledge-checks'" value="Back to tests">Back to tests</button>
+    </div>
   </div>
 </div>
 </body>
