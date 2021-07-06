@@ -8,6 +8,9 @@
     <link href="../static/css/style.css" th:href="@{/css/style.css}" rel="stylesheet"/>
 </head>
 <body style="background-color: #F1F1F1; margin-top: 15px; margin-left: 15px;margin-bottom: 15px">
+<div class="btn-small">
+    <button class="btn-small" style="margin-top: 1rem" onclick="location.href='/'" value="Logout">Logout</button>
+</div>
 <div class="knowledge-check">
     <h3 style="color: #C620FC" th:text="${knowledgeCheck.getName()}"></h3>
     <form th:action="@{/student/tests/testTaken}" th:object="${form}" name="questions" id="questions" method="POST"
