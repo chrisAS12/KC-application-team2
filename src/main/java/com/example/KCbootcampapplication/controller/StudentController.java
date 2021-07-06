@@ -45,13 +45,13 @@ public class StudentController {
         model.addAttribute("user_id", user.getId());
         List<Question> questions = dbManager.getQuestionsForKc(id);
         int multipleChoiceQuestionAmount = 0;
-        for(int i = 0; i < questions.size(); i++){
-            if(questions.get(i).getType() == "mult"){
+        for (int i = 0; i < questions.size(); i++) {
+            if (questions.get(i).getType() == "mult") {
                 multipleChoiceQuestionAmount += 4;
             }
         }
         QuestionDisplayDto questionForm = new QuestionDisplayDto(questions.size(), multipleChoiceQuestionAmount);
-        for(int i = 0; i < questions.size(); i++){
+        for (int i = 0; i < questions.size(); i++) {
             questionForm.addQuestion(questions.get(i));
         }
         model.addAttribute("form", questionForm);

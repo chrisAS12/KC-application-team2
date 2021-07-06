@@ -17,8 +17,7 @@ import java.util.List;
 
 public class DatabaseManager {
 
-    private PasswordEncoder passwordEncoder = new BCryptPasswordEncoder(6);
-    ;
+    private final PasswordEncoder passwordEncoder = new BCryptPasswordEncoder(6);
     static SessionFactory factory;
 
     public DatabaseManager() {
