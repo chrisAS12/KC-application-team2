@@ -15,8 +15,11 @@
         <a th:href="'/admin/create-multiple-choice-question-view/'+ @{${knowledgeCheck.id}}">
             <input type="button" value="Add multiple choice question">
         </a>
-        <a th:href="'/admin/create-radio-button-question/'+ @{${knowledgeCheck.id}}">
+        <a th:href="'/admin/create-radio-button-question-view/'+ @{${knowledgeCheck.id}}">
             <input type="button" value="Add radio button question">
+        </a>
+        <a th:href="'/admin/create-free-question-view/'+ @{${knowledgeCheck.id}}">
+            <input type="button" value="Add a free question">
         </a>
     </div>
 </div>
