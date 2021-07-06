@@ -139,7 +139,7 @@ public class DatabaseManager {
         Question question = new Question();
     }
 
-    public KnowledgeCheck getKcById (int id){
+    public KnowledgeCheck getKcById(int id) {
 
         var session = factory.openSession();
 
@@ -153,7 +153,7 @@ public class DatabaseManager {
         return null;
     }
 
-    public List <Question> getQuestionsForKc(int id){
+    public List<Question> getQuestionsForKc(int id) {
         var session = factory.openSession();
         try {
             List<Question> res = new ArrayList<>();
@@ -162,9 +162,9 @@ public class DatabaseManager {
             query.setParameter("id", id);
             var results = query.list();
             if (results.size() > 0) {
-                for (Object o : results){
+                for (Object o : results) {
                     Question q = (Question) o;
-                   // System.err.println(q.getTitle());        //FOR TEST PURPOSES
+                    // System.err.println(q.getTitle());        //FOR TEST PURPOSES
                     res.add(q);
                 }
                 return res;

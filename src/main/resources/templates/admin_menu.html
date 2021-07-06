@@ -1,20 +1,22 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <title>Menu</title>
-        <link href="../static/css/style.css" th:href="@{/css/style.css}" rel="stylesheet"/>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    </head>
-    <body class="container-middle-align">
-        <h2 class="text-inner-shadow">Menu</h2>
-      <!--  <h1 th:text="'Greetings, ' + ${userName} + '!'"></h1> -->
-        <div class="btn-big">
-            <input type="button" onclick="location.href='/admin/knowledge-checks'" value="See all tests">
-            <input type="button" onclick="location.href='/admin/results'" value="Check results">
-            <input type="button" onclick="location.href='/admin/create-knowledge-check'" value="Create new test">
-            <input type="button" onclick="location.href='/admin/new-user'" value="Create new user">
-        </div>
-    </body>
+<head>
+    <meta charset="UTF-8">
+    <title>Menu</title>
+    <link href="../static/css/style.css" th:href="@{/css/style.css}" rel="stylesheet"/>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
+            crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body class="container-middle-align">
+<h2 class="text-inner-shadow">Menu</h2>
+<!--  <h1 th:text="'Greetings, ' + ${userName} + '!'"></h1> -->
+<div class="btn-big">
+    <input style="width:350px" type="button" onclick="location.href='/admin/knowledge-checks'" value="See all tests">
+    <input style="width:350px" type="button" onclick="location.href='/admin/results'" value="Check results">
+    <input style="width:350px" type="button" onclick="location.href='/admin/create-knowledge-check'" value="Create new test">
+    <input style="width:350px" type="button" onclick="location.href='/admin/new-user'" value="Create new user">
+</div>
+</body>
 </html>

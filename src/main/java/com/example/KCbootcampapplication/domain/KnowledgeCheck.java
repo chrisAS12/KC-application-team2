@@ -43,7 +43,7 @@ public class KnowledgeCheck {
     private List<Question> question;
 
     @Override
-    public String toString(){
+    public String toString() {
         return this.getName();
     }
 }

@@ -19,7 +19,7 @@
     background-color: #C620FC;
 }
 
-.btn-small button, button[type=submit], input[type=button] {
+.btn-small button, button[type=submit] {
     font: 20px Roboto, sans-serif;
     line-height: 30px;
     align-items: center;

@@ -11,26 +11,26 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name="user")
+@Table(name = "user")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "user_id")
     private int id;
 
-    @Column(name = "user_login", nullable=false)
+    @Column(name = "user_login", nullable = false)
     private String login;
 
-    @Column(name = "user_email", nullable=false)
+    @Column(name = "user_email", nullable = false)
     private String email;
 
-    @Column(name = "user_password", nullable=false)
+    @Column(name = "user_password", nullable = false)
     private String password;
 
-    @Column(name = "user_role", nullable=false)
+    @Column(name = "user_role", nullable = false)
     private String role;
 
-    @Column(name = "user_name", nullable=false)
+    @Column(name = "user_name", nullable = false)
     private String name;
 
     @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)  // TODO: 7/1/2021 need to check this join
